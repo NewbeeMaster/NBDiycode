@@ -12,11 +12,11 @@ import newbeemaster.com.nbdiycode.R;
  * [2017] by Zone
  */
 
-public class BeginFragment  extends Fragment {
+public class BeginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return   inflater.inflate(R.layout.frag_begin, null);
+        return inflater.inflate(R.layout.frag_begin, null);
     }
 
 }

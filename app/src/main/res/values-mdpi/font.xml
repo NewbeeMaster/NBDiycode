@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="font20px">6.67sp</dimen>
+    <dimen name="font21px">7.0sp</dimen>
+    <dimen name="font22px">7.33sp</dimen>
+    <dimen name="font23px">7.67sp</dimen>
+    <dimen name="font24px">8.0sp</dimen>
+    <dimen name="font25px">8.33sp</dimen>
+    <dimen name="font26px">8.67sp</dimen>
+    <dimen name="font27px">9.0sp</dimen>
+    <dimen name="font28px">9.33sp</dimen>
+    <dimen name="font29px">9.67sp</dimen>
+    <dimen name="font30px">10.0sp</dimen>
+    <dimen name="font31px">10.33sp</dimen>
+    <dimen name="font32px">10.67sp</dimen>
+    <dimen name="font33px">11.0sp</dimen>
+    <dimen name="font34px">11.33sp</dimen>
+    <dimen name="font35px">11.67sp</dimen>
+    <dimen name="font36px">12.0sp</dimen>
+    <dimen name="font37px">12.33sp</dimen>
+    <dimen name="font38px">12.67sp</dimen>
+    <dimen name="font39px">13.0sp</dimen>
+    <dimen name="font40px">13.33sp</dimen>
+    <dimen name="font41px">13.67sp</dimen>
+    <dimen name="font42px">14.0sp</dimen>
+    <dimen name="font43px">14.33sp</dimen>
+    <dimen name="font44px">14.67sp</dimen>
+    <dimen name="font45px">15.0sp</dimen>
+    <dimen name="font46px">15.33sp</dimen>
+    <dimen name="font47px">15.67sp</dimen>
+    <dimen name="font48px">16.0sp</dimen>
+    <dimen name="font49px">16.33sp</dimen>
+    <dimen name="font50px">16.67sp</dimen>
+</resources>

@@ -1,7 +1,5 @@
 package newbeemaster.com.nbdiycode.fragment;
 
-import android.app.Application;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,21 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
 import com.zone.zbanner.ViewPagerCircle;
 import com.zone.zbanner.indicator.IndicatorView;
 import com.zone.zbanner.indicator.type.CircleIndicator;
 import com.zone.zbanner.indicator.type.abstarct.ShapeIndicator;
 import com.zone.zbanner.simpleadapter.PagerAdapterCircle_Image;
-
+import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import newbeemaster.com.nbdiycode.R;
-import newbeemaster.com.nbdiycode.activity.MainActivity;
+import newbeemaster.com.nbdiycode.event.GuideFinishEvent;
 
 /**
  * [2017] by Zone
@@ -48,10 +44,9 @@ public class GuideFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_guide, null);
-        this.rootView = view;
-        ButterKnife.bind(this, view);
-        return view;
+        rootView= inflater.inflate(R.layout.frag_guide, null);
+        ButterKnife.bind(this, rootView);
+        return rootView;
     }
 
     @Override
@@ -62,9 +57,10 @@ public class GuideFragment extends Fragment {
         resourceList.add(R.drawable.lanuch_02);
         resourceList.add(R.drawable.lanuch_03);
 
-        ivLaunch.setOnClickListener(a ->{
-            startActivity(new Intent(view.getContext(), MainActivity.class));
-//            finish
+        ivLaunch.setOnClickListener(a -> {
+
+            EventBus.getDefault().post(new GuideFinishEvent());
+
         });
 
         mviewPager = new PagerAdapterCircle_Image(view.getContext(), resourceList, false) {
