@@ -4,11 +4,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 import com.zone.zbanner.ViewPagerCircle;
 import com.zone.zbanner.indicator.IndicatorView;
 import com.zone.zbanner.indicator.type.CircleIndicator;
@@ -26,7 +28,7 @@ import newbeemaster.com.nbdiycode.event.GuideFinishEvent;
  * [2017] by Zone
  */
 
-public class GuideFragment extends Fragment {
+public class GuideFragment extends RxFragment {
 
     View rootView;
 
@@ -57,12 +59,6 @@ public class GuideFragment extends Fragment {
         resourceList.add(R.drawable.lanuch_02);
         resourceList.add(R.drawable.lanuch_03);
 
-        ivLaunch.setOnClickListener(a -> {
-
-            EventBus.getDefault().post(new GuideFinishEvent());
-
-        });
-
         mviewPager = new PagerAdapterCircle_Image(view.getContext(), resourceList, false) {
             @Override
             public void setImage(ImageView iv, final int position) {
@@ -74,6 +70,8 @@ public class GuideFragment extends Fragment {
 
             }
         };
+
+        ivLanuch();
 
         pager.setAdapter(mviewPager);
         pager.closeTimeCircle();
@@ -92,6 +90,22 @@ public class GuideFragment extends Fragment {
                                 .setHaveStrokeColor(false));
         indicatorView.setIndicator(circleIndicator);
 
+    }
+
+    private void ivLanuch() {
+        ivLaunch.setVisibility(View.GONE);
+        ivLaunch.setOnClickListener(a -> EventBus.getDefault().post(new GuideFinishEvent()));
+        pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                if(position==2)
+                    ivLaunch.setVisibility(View.VISIBLE);
+                else
+                    ivLaunch.setVisibility(View.GONE);
+            }
+
+        });
     }
 
     @Override

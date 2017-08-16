@@ -2,6 +2,7 @@ package newbeemaster.com.nbdiycode.activity;
 
 import android.content.Intent;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -25,8 +26,9 @@ public class GuideActivity extends BaseNBActivity {
 
     @Override
     public void setContentView() {
-        mKindControl.get(ScreenSettingKind.class).setFullScreen();
-        mKindControl.get(ScreenSettingKind.class).setNoTitle_AppCompatActivity();
+//        mKindControl.get(ScreenSettingKind.class).setFullScreen();
+        //todo  title 非空判断
+//        mKindControl.get(ScreenSettingKind.class).setNoTitle_AppCompatActivity();
 
         setContentView(R.layout.a_guide);
         switchEventBus(true);
@@ -53,12 +55,15 @@ public class GuideActivity extends BaseNBActivity {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(GuideFinishEvent event) {
+    public synchronized void onMessageEvent(GuideFinishEvent event) {
+
+        //防止第二次进入
+        EventBus.getDefault().unregister(this);
+
         /* Do something */
         startActivity(new Intent(GuideActivity.this, MainActivity.class));
         finish();
-    }
 
-    ;
+    }
 
 }
