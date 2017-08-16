@@ -1,11 +1,14 @@
 package newbeemaster.com.nbdiycode.activity.common;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import org.greenrobot.eventbus.EventBus;
 
 import and.base.activity.BaseAppCompatActivity;
 import butterknife.ButterKnife;
+import newbeemaster.com.nbdiycode.util.ViewHolder;
 
 /**
  * [2017] by Zone
@@ -14,6 +17,7 @@ import butterknife.ButterKnife;
 public abstract class BaseNBActivity extends BaseAppCompatActivity {
 
     private boolean enable;
+    protected ViewHolder mViewHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +45,10 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity {
                 e.printStackTrace();
             }
         ButterKnife.unbind(this);
+    }
+
+    public static void openActivity(Context context, Class<?> cls) {
+        Intent intent = new Intent(context, cls);
+        context.startActivity(intent);
     }
 }
