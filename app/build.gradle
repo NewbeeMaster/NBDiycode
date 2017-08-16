@@ -2,8 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 
 android {
+
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
+
     defaultConfig {
         applicationId "newbeemaster.com.nbdiycode"
         minSdkVersion 16
@@ -11,14 +13,31 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        jackOptions {
+            enabled false
+        }
     }
     buildTypes {
+
         release {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            //minifyEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+//            signingConfig signingConfigs.config
+        }
     }
-    productFlavors {
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -29,13 +48,18 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
+
+    //Z系列
     compile 'com.github.luhaoaimama1:ZRefreshLayout:1.0.17'
     compile 'com.github.luhaoaimama1:ZAdapter3:1.0.5'
     compile 'com.github.luhaoaimama1:ZLog:1.0.1'
     compile 'com.github.luhaoaimama1:Zbanner:1.0.2'
     compile 'com.github.luhaoaimama1:zone-sdk:1.0.91'
+
+    //基本库
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    //    compile project(':retrofitAPI')
+    compile 'org.greenrobot:eventbus:3.0.0'
+
     compile project(':sdk')
 }
