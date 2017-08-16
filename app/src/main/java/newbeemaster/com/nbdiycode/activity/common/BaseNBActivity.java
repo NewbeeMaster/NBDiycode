@@ -1,5 +1,7 @@
 package newbeemaster.com.nbdiycode.activity.common;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
@@ -18,6 +20,7 @@ import and.base.activity.BaseAppCompatActivity;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
+import newbeemaster.com.nbdiycode.util.ViewHolder;
 
 /**
  * [2017] by Zone
@@ -26,6 +29,7 @@ import io.reactivex.subjects.BehaviorSubject;
 public abstract class BaseNBActivity extends BaseAppCompatActivity implements LifecycleProvider<ActivityEvent> {
 
     private boolean enable;
+    protected ViewHolder mViewHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +56,7 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            
+
         try {
             ButterKnife.unbind(this);
         } catch (Exception e) {
@@ -110,5 +114,10 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
     protected void onStop() {
         this.lifecycleSubject.onNext(ActivityEvent.STOP);
         super.onStop();
+    }
+
+    public static void openActivity(Context context, Class<?> cls) {
+        Intent intent = new Intent(context, cls);
+        context.startActivity(intent);
     }
 }
