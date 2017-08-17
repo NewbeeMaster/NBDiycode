@@ -61,7 +61,7 @@ public class GuideActivity extends BaseNBActivity {
         EventBus.getDefault().unregister(this);
 
         /* Do something */
-        startActivity(new Intent(GuideActivity.this, MainActivity.class));
+        startActivity(new Intent(GuideActivity.this, AboutActivity.class));
         finish();
 
     }

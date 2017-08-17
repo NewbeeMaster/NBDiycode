@@ -7,15 +7,14 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
-
 import org.greenrobot.eventbus.EventBus;
-
 import and.base.activity.BaseAppCompatActivity;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
@@ -120,4 +119,23 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
         Intent intent = new Intent(context, cls);
         context.startActivity(intent);
     }
+
+
+    /*
+     * 在setContent之前调用
+     * Android 全屏界面切换到非全屏界面的问题
+     *http://blog.csdn.net/u013011318/article/details/48296869
+     */
+    protected void smoothSwitchScreen() {
+        // 5.0以上修复了此bug
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        ViewGroup rootView = ((ViewGroup) this.findViewById(android.R.id.content));
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+        rootView.setPadding(0, statusBarHeight, 0, 0);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//        }
+    }
+
 }

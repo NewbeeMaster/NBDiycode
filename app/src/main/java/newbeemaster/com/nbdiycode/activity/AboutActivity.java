@@ -23,14 +23,13 @@
 package newbeemaster.com.nbdiycode.activity;
 
 import android.view.View;
-
 import butterknife.OnClick;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 
 public class AboutActivity extends BaseNBActivity implements View.OnClickListener {
 
-    @OnClick({ R.id.feed_back, R.id.github, R.id.contribute })
+    @OnClick({R.id.feed_back, R.id.github, R.id.contribute})
 
     @Override
     public void onClick(View v) {
@@ -49,8 +48,10 @@ public class AboutActivity extends BaseNBActivity implements View.OnClickListene
 
     @Override
     public void setContentView() {
+        smoothSwitchScreen();
         setContentView(R.layout.activity_about);
     }
+
 
     @Override
     public void initData() {
