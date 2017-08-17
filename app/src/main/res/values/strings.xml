@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="scale_down_show_behavior">com.gcssloop.diycode.widget.behavior.ScaleDownShowBehavior</string>
+    <string name="scale_down_show_behavior">newbeemaster.com.nbdiycode.widget.behavior.ScaleDownShowBehavior</string>
 
     <string name="app_name">NBDiycode</string>
 

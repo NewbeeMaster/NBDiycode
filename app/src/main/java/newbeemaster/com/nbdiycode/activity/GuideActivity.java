@@ -64,7 +64,8 @@ public class GuideActivity extends BaseNBActivity {
         /* Do something */
         startActivity(new Intent(GuideActivity.this, AboutActivity.class));
         finish();
-
     }
+
+    ;
 
 }
