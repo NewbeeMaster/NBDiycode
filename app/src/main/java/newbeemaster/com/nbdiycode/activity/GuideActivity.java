@@ -6,7 +6,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import and.base.activity.kinds.ScreenSettingKind;
 import and.utils.activity_fragment_ui.FragmentSwitcher;
 import and.utils.data.file2io2data.SharedUtils;
 import newbeemaster.com.nbdiycode.R;
@@ -63,7 +62,8 @@ public class GuideActivity extends BaseNBActivity {
         /* Do something */
         startActivity(new Intent(GuideActivity.this, AboutActivity.class));
         finish();
-
     }
+
+    ;
 
 }

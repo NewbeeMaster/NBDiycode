@@ -6,11 +6,10 @@ import android.graphics.Color;
 import com.socks.library.ZLog;
 
 import and.Configuration;
-import and.utils.data.file2io2data.SharedUtils;
 import zone.com.zrefreshlayout.Config;
 import zone.com.zrefreshlayout.footer.NullFooter;
 import zone.com.zrefreshlayout.header.MeterialHead;
-import zone.com.zrefreshlayout.resistance.*;
+import zone.com.zrefreshlayout.resistance.DampingHalf;
 
 /**
  * [2017] by Zone
@@ -36,6 +35,7 @@ public class NBApp extends Application {
         ZLog.config()
 //                .addFilter("ga")
                 .debug(isDebug);
+        newbeemaster.com.nbdiycode.util.Config.init(this);
 
         //adapter
 

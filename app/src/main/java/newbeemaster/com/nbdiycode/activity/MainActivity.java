@@ -68,7 +68,6 @@ public class MainActivity extends BaseNBActivity
         initMenu();
         initViewPager();
 
-
     }
 
     @Override
