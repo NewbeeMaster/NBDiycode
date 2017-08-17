@@ -20,23 +20,27 @@
  * Weibo:   http://weibo.com/GcsSloop
  */
 
-package zone.com.sdk.API.gank2.api;
-import zone.com.sdk.API.gank.bean.MeiZiData;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
+package zone.com.sdk.API.login.api;
+import android.support.annotation.NonNull;
 import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.sdk.API.token.bean.Token;
+import zone.com.sdk.base.BaseImpl;
+import zone.com.sdk.base.ConstantURL;
 
- interface Gank2Service {
+public class LoginImpl extends BaseImpl<LoginService> implements LoginAPI {
 
-    //--- Token ------------------------------------------------------------------------------------
 
     /**
-     * 获取 Token (一般在登录时调用)
+     * 登录时调用
+     * 返回一个 token，用于获取各类私有信息使用，该 token 用 LoginEvent 接收。
      *
-     * @return Token 实体类
+     * @param user_name 用户名
+     * @param password  密码
      */
-    @GET("{limit}/{pageNumber}")
-    Call<MeiZiData> getPics(@Path("limit") String limit, @Path("pageNumber") String pageNumber);
-
+    @Override
+    public DialogCall<Token> login(@NonNull String user_name, @NonNull String password) {
+        return dialogWrapper(mService.getToken(ConstantURL.client_id
+                , ConstantURL.client_secret, ConstantURL.GRANT_TYPE_LOGIN
+                , user_name, password));
+    }
 }

@@ -10,9 +10,9 @@ import java.lang.reflect.Method;
  */
 public class DyHandler implements InvocationHandler {
     //要代理的原始对象
-    private APIController2 obj;
+    private Diycode obj;
 
-    public DyHandler(APIController2 obj) {
+    public DyHandler(Diycode obj) {
         super();
         this.obj = obj;
 
@@ -29,9 +29,9 @@ public class DyHandler implements InvocationHandler {
         Object result = null;
         //调用之前
         doBefore();
-        for (APIController2.Entity entity : obj.entityList) {
+        for (Diycode.Entity entity : obj.entityList) {
             if (method.getDeclaringClass().isAssignableFrom(entity.interfaceClass)) {
-                method.invoke(entity.instance, args);
+                result=method.invoke(entity.instance, args);
             }
         }
         //调用原始对象的方法

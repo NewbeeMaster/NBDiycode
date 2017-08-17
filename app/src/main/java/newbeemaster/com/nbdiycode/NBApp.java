@@ -30,12 +30,14 @@ public class NBApp extends Application {
 //        SharedUtils.SHARED_NAME="NBDiycode";
         Configuration.Build.init(this).perform();
 
+
         initRefreshConfig();
 
         ZLog.config()
 //                .addFilter("ga")
                 .debug(isDebug);
         newbeemaster.com.nbdiycode.util.Config.init(this);
+        zone.com.retrofitlib.Config.getInstance().setContext(this);
 
         //adapter
 

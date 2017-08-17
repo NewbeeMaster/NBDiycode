@@ -7,7 +7,7 @@ import zone.com.retrofit.callwrapper.DialogCall;
  * [2017] by Zone
  */
 
-public interface DiycodeTokenAPI {
+public interface TokenAPI {
 
     DialogCall<Token> getToken(String grant_type, String username, String password);
 

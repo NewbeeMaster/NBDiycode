@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import com.bumptech.glide.Glide;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 import com.zone.zbanner.ViewPagerCircle;
@@ -16,9 +17,12 @@ import com.zone.zbanner.indicator.IndicatorView;
 import com.zone.zbanner.indicator.type.CircleIndicator;
 import com.zone.zbanner.indicator.type.abstarct.ShapeIndicator;
 import com.zone.zbanner.simpleadapter.PagerAdapterCircle_Image;
+
 import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import newbeemaster.com.nbdiycode.R;
@@ -29,8 +33,6 @@ import newbeemaster.com.nbdiycode.event.GuideFinishEvent;
  */
 
 public class GuideFragment extends RxFragment {
-
-    View rootView;
 
     @Bind(R.id.pager)
     ViewPagerCircle pager;
@@ -46,7 +48,7 @@ public class GuideFragment extends RxFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView= inflater.inflate(R.layout.frag_guide, null);
+        View rootView = inflater.inflate(R.layout.frag_guide, null);
         ButterKnife.bind(this, rootView);
         return rootView;
     }
@@ -99,19 +101,13 @@ public class GuideFragment extends RxFragment {
 
             @Override
             public void onPageSelected(int position) {
-                if(position==2)
+                if (position == 2)
                     ivLaunch.setVisibility(View.VISIBLE);
                 else
                     ivLaunch.setVisibility(View.GONE);
             }
 
         });
-    }
-
-    @Override
-    public void onDestroy() {
-        ButterKnife.bind(rootView);
-        super.onDestroy();
     }
 
     @Override

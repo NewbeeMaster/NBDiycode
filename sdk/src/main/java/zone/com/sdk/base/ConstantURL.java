@@ -36,8 +36,8 @@ public class ConstantURL {
     public static final String TOKEN_PREFIX = "Bearer ";
 
     //秘钥
-    public static final String client_id = "50774ca6";
-    public static final String client_secret = "5d5e00ce2262490fd0cc27c473d19cb6edbb581143cde826a150e1f552a877e0";
+    public static final String client_id = "d24ee5bc";
+    public static final String client_secret = "2994d590ca75e28021ba323a6c2c2a5311826b1b60e3aec1383ecc4131ea4e56";
 
 
 }

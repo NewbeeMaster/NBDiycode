@@ -9,7 +9,7 @@ import zone.com.retrofit.callwrapper.DialogCall;
  * [2017] by Zone
  */
 
-public class DiycodeTokenImpl extends BaseImpl<DiycodeTokenService> implements DiycodeTokenAPI {
+public class TokenImpl extends BaseImpl<TokenService> implements TokenAPI {
 
     @Override
     public DialogCall<Token> getToken(String grant_type, String username, String password) {

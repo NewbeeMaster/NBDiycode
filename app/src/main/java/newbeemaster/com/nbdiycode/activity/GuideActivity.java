@@ -6,6 +6,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import and.base.activity.kinds.SwipeBackKind;
 import and.utils.activity_fragment_ui.FragmentSwitcher;
 import and.utils.data.file2io2data.SharedUtils;
 import newbeemaster.com.nbdiycode.R;
@@ -26,6 +27,7 @@ public class GuideActivity extends BaseNBActivity {
 
     @Override
     public void setContentView() {
+        mKindControl.get(SwipeBackKind.class).setSwipeBackEnable(false);
 //        mKindControl.get(ScreenSettingKind.class).setFullScreen();
         //todo  title 非空判断
 //        mKindControl.get(ScreenSettingKind.class).setNoTitle_AppCompatActivity();
@@ -62,7 +64,7 @@ public class GuideActivity extends BaseNBActivity {
         EventBus.getDefault().unregister(this);
 
         /* Do something */
-        startActivity(new Intent(GuideActivity.this, AboutActivity.class));
+        startActivity(new Intent(GuideActivity.this, MainActivity.class));
         finish();
     }
 

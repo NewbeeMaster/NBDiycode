@@ -11,7 +11,7 @@ import retrofit2.http.POST;
  * [2017] by Zone
  */
 
-public interface DiycodeTokenService  {
+public interface TokenService {
 
 
 

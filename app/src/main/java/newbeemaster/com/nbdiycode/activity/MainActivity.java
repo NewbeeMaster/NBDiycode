@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 
+import and.base.activity.kinds.SwipeBackKind;
 import butterknife.Bind;
 import butterknife.OnClick;
 import newbeemaster.com.nbdiycode.R;
@@ -57,6 +58,7 @@ public class MainActivity extends BaseNBActivity
 
     @Override
     public void setContentView() {
+        mKindControl.get(SwipeBackKind.class).setSwipeBackEnable(false);
         setContentView(R.layout.a_main);
     }
 
@@ -249,7 +251,7 @@ public class MainActivity extends BaseNBActivity
             avatar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    openActivity(LoginActivity.class);
+                    openActivity(LoginActvity.class);
                 }
             });
 //        }

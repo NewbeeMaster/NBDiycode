@@ -36,12 +36,11 @@ public class BeginFragment extends RxFragment {
     ImageView iv;
     @Bind(R.id.loadingPass)
     TextView loadingPass;
-    private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.frag_begin, null);
+        View rootView = inflater.inflate(R.layout.frag_begin, null);
         ButterKnife.bind(this, rootView);
         return rootView;
     }

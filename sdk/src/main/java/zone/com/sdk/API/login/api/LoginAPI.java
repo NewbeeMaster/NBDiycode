@@ -20,15 +20,26 @@
  * Weibo:   http://weibo.com/GcsSloop
  */
 
-package zone.com.sdk.API.gank2.api;
+package zone.com.sdk.API.login.api;
 
-
-import zone.com.sdk.API.gank.bean.MeiZiData;
+import android.support.annotation.NonNull;
+import retrofit2.Call;
 import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.sdk.API.token.bean.Token;
 
-public interface Gank2API {
+
+public interface LoginAPI {
 
     //--- login ------------------------------------------------------------------------------------
 
-    DialogCall<MeiZiData> getPics(String limit, String pageNumber, int noUse);
+    /**
+     * 登录时调用
+     * 返回一个 token，用于获取各类私有信息使用，该 token 用 LoginEvent 接收。
+     *
+     * @param user_name 用户名
+     * @param password  密码
+     */
+    DialogCall<Token> login(@NonNull String user_name, @NonNull String password);
+
+
 }
