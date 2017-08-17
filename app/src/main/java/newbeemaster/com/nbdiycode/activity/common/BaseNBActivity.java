@@ -8,12 +8,15 @@ import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
+
 import org.greenrobot.eventbus.EventBus;
+
 import and.base.activity.BaseAppCompatActivity;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
@@ -135,6 +138,12 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 //        }
     }
+
+
+    // ======================================= 
+    // =============切换动画============== 
+    // =======================================
+
 
     private AnimSwitchEnum mAnimSwitchEnum = AnimSwitchEnum.None;
 
