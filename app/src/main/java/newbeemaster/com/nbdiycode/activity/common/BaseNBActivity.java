@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import com.trello.rxlifecycle2.LifecycleProvider;
@@ -27,19 +26,18 @@ import newbeemaster.com.nbdiycode.util.ViewHolder;
 
 public abstract class BaseNBActivity extends BaseAppCompatActivity implements LifecycleProvider<ActivityEvent> {
 
-    private boolean enable;
     protected ViewHolder mViewHolder;
+    private boolean isRegisterEventBus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.lifecycleSubject.onNext(ActivityEvent.CREATE);
-        if (enable)
-            EventBus.getDefault().register(this);
     }
 
-    public void switchEventBus(boolean enable) {
-        this.enable = enable;
+    public void registerEventBus() {
+        isRegisterEventBus = true;
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -49,7 +47,7 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
 
     @Override
     protected void onDestroy() {
-        if (enable)
+        if (isRegisterEventBus)
             try {
                 EventBus.getDefault().unregister(this);
             } catch (Exception e) {
@@ -138,4 +136,21 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
 //        }
     }
 
+    private AnimSwitchEnum mAnimSwitchEnum = AnimSwitchEnum.None;
+
+    public void setAnimSwitchEnum(AnimSwitchEnum animSwitchEnum) {
+        this.mAnimSwitchEnum = animSwitchEnum;
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        mAnimSwitchEnum.overridePendingTransition(this);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        mAnimSwitchEnum.overridePendingTransition(this);
+    }
 }
