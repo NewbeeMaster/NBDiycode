@@ -21,16 +21,18 @@ import and.base.activity.kinds.SwipeBackKind;
 import butterknife.Bind;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
+import newbeemaster.com.nbdiycode.constant.SPConstant;
 import newbeemaster.com.nbdiycode.event.UserEvent;
 import newbeemaster.com.nbdiycode.fragment.GuideFragment;
+import newbeemaster.com.nbdiycode.fragment.TopicListFragment;
+import newbeemaster.com.nbdiycode.util.SharedUtils;
+import zone.com.sdk.API.login.bean.UserDetail;
 
 public class MainActivity extends BaseNBActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private int mCurrentPosition = 0;
-    //    private TopicListFragment mFragment1;
-//    private NewsListFragment mFragment2;
-//    private SitesListFragment mFragment3;
-    private GuideFragment mFragment1;
+
+    private TopicListFragment mFragment1;
     private GuideFragment mFragment2;
     private GuideFragment mFragment3;
 
@@ -53,6 +55,7 @@ public class MainActivity extends BaseNBActivity
     public void setContentView() {
         mKindControl.get(SwipeBackKind.class).setSwipeBackEnable(false);
         setContentView(R.layout.a_main);
+        registerEventBus();
     }
 
     @Override
@@ -68,11 +71,8 @@ public class MainActivity extends BaseNBActivity
     @Override
     public void initData() {
         initMenu();
-        loadMenuData(null);
+        loadMenuData(new UserEvent(SharedUtils.get(SPConstant.USER_DETAIL,UserDetail.class)));
         initViewPager();
-
-
-
     }
 
     @Override
@@ -85,7 +85,7 @@ public class MainActivity extends BaseNBActivity
     private void initViewPager() {
         mViewPager.setOffscreenPageLimit(3); // 防止滑动到第三个页面时，第一个页面被销毁
 
-        mFragment1 = new GuideFragment();
+        mFragment1 = new TopicListFragment();
         mFragment2 = new GuideFragment();
         mFragment3 = new GuideFragment();
 

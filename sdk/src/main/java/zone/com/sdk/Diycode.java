@@ -9,6 +9,8 @@ import zone.com.sdk.API.login.api.LoginAPI;
 import zone.com.sdk.API.login.api.LoginImpl;
 import zone.com.sdk.API.token.api.TokenAPI;
 import zone.com.sdk.API.token.api.TokenImpl;
+import zone.com.sdk.API.topic.api.TopicAPI;
+import zone.com.sdk.API.topic.api.TopicImpl;
 
 /**
  * [2017] by Zone
@@ -31,6 +33,7 @@ public class Diycode {
     static {
         entityList.add(new Entity(TokenAPI.class, new TokenImpl()));
         entityList.add(new Entity(LoginAPI.class, new LoginImpl()));
+        entityList.add(new Entity(TopicAPI.class, new TopicImpl()));
     }
 
     static APICall mAPICall;

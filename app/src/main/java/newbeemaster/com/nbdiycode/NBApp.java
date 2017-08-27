@@ -54,6 +54,7 @@ public class NBApp extends Application {
                 .setHeader(new MeterialHead(colors_red_green_yellow))
                 .setFooter(new NullFooter())
                 .setResistance(new DampingHalf())
+                .setPinContent(true)
 //                .setHeader(new  CircleRefresh())
                 .setResistance(new newbeemaster.com.nbdiycode.config.zrefresh.DampingTo3Head())
                 .writeLog(isDebug)

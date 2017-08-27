@@ -101,7 +101,8 @@ public class BaseImpl<Service> {
         // 配置 Retrofit
         mRetrofit = new Retrofit.Builder()
                 //todo  url debug模式  在之类修改 不能用拦截器修改  因为url不同的话 拦截器会报错
-                .baseUrl(isDebug ? "http://debug.gank.io/api/data/福利/" : "http://gank.io/api/data/福利/")                         // 设置 base url
+//                .baseUrl(isDebug ? "http://debug.gank.io/api/data/福利/" : "http://gank.io/api/data/福利/")                         // 设置 base url
+                .baseUrl(ConstantURL.BASE_URL)                         // 设置 base url
                 .client(client)                                     // 设置 client
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create()) // 设置 Json 转换工具

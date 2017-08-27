@@ -8,7 +8,6 @@ import org.greenrobot.eventbus.EventBus;
 
 import and.utils.activity_fragment_ui.ToastUtils;
 import and.utils.data.check.StringCheck;
-import and.utils.data.file2io2data.SharedUtils;
 import butterknife.Bind;
 import butterknife.OnClick;
 import newbeemaster.com.nbdiycode.R;
@@ -16,6 +15,7 @@ import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.constant.SPConstant;
 import newbeemaster.com.nbdiycode.event.UserEvent;
 import newbeemaster.com.nbdiycode.util.IntentUtil;
+import newbeemaster.com.nbdiycode.util.SharedUtils;
 import newbeemaster.com.nbdiycode.utils.RxComposes;
 import zone.com.sdk.Diycode;
 import zone.com.sdk.base.extra.CacheUtil;
@@ -77,12 +77,12 @@ public class LoginActvity extends BaseNBActivity {
                                     .subscribe(userDetail -> {
                                                 EventBus.getDefault().post(new UserEvent(userDetail));
                                                 SharedUtils.put(SPConstant.USER_DETAIL, userDetail);
+                                                finish();
                                             },
                                             throwable -> {
                                                 ToastUtils.showShort(this, "用户信息获取异常！");
                                             });
 
-                            finish();
                         }
                         , throwable -> {
                             ZLog.e("登录失败：" + throwable.getMessage());
