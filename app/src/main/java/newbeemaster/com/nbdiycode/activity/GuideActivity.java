@@ -68,6 +68,4 @@ public class GuideActivity extends BaseNBActivity {
         finish();
     }
 
-    ;
-
 }

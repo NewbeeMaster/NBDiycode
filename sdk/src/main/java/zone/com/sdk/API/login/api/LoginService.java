@@ -21,10 +21,13 @@
  */
 
 package zone.com.sdk.API.login.api;
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.token.bean.Token;
 import zone.com.sdk.base.ConstantURL;
 
@@ -50,4 +53,11 @@ public interface LoginService {
             @Field("password") String password);
 
 
+    /**
+     * 获取当前登录者的详细资料
+     *
+     * @return 用户详情
+     */
+    @GET("users/me.json")
+    Observable<UserDetail> getMe();
 }

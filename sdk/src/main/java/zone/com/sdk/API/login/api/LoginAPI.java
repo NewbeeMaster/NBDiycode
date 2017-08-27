@@ -23,8 +23,12 @@
 package zone.com.sdk.API.login.api;
 
 import android.support.annotation.NonNull;
+
+import io.reactivex.Observable;
 import retrofit2.Call;
+import retrofit2.http.GET;
 import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.token.bean.Token;
 
 
@@ -41,5 +45,19 @@ public interface LoginAPI {
      */
     DialogCall<Token> login(@NonNull String user_name, @NonNull String password);
 
+
+    /**
+     * 获取当前登录者的详细资料
+     *
+     * @return 用户详情
+     */
+    Observable<UserDetail> getMe();
+
+    /**
+     * 是否登录
+     *
+     * @return 是否登录
+     */
+    boolean isLogin();
 
 }

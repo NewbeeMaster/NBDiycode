@@ -6,4 +6,5 @@ package newbeemaster.com.nbdiycode.constant;
 
 public class SPConstant {
     public static  final String OPEN_COUNT="OPEN_COUNT";
+    public static  final String USER_DETAIL="UserDetail";
 }

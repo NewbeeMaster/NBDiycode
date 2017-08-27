@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2017 GcsSloop
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,15 +21,15 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_notification"
         android:icon="@mipmap/notification"
         android:title="通知"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="设置"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 </menu>

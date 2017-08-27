@@ -8,14 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.nineoldandroids.animation.Animator;
 import com.trello.rxlifecycle2.components.support.RxFragment;
-
 import org.greenrobot.eventbus.EventBus;
-
 import java.util.concurrent.TimeUnit;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;

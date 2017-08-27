@@ -28,13 +28,14 @@ import java.io.File;
 import java.lang.reflect.ParameterizedType;
 import java.util.concurrent.TimeUnit;
 
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import zone.com.sdk.base.extra.CacheUtil;
 import zone.com.sdk.base.extra.TokenInterceptor;
 import zone.com.sdk.base.extra.ZAuthenticator;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 import zone.com.retrofitlib.RunConfig;
 import zone.com.retrofit.callwrapper.DialogCall;
@@ -102,6 +103,7 @@ public class BaseImpl<Service> {
                 //todo  url debug模式  在之类修改 不能用拦截器修改  因为url不同的话 拦截器会报错
                 .baseUrl(isDebug ? "http://debug.gank.io/api/data/福利/" : "http://gank.io/api/data/福利/")                         // 设置 base url
                 .client(client)                                     // 设置 client
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create()) // 设置 Json 转换工具
                 .build();
     }

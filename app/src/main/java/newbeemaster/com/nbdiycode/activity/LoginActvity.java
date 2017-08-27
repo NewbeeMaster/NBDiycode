@@ -4,12 +4,18 @@ import android.widget.EditText;
 
 import com.socks.library.ZLog;
 
+import org.greenrobot.eventbus.EventBus;
+
 import and.utils.activity_fragment_ui.ToastUtils;
 import and.utils.data.check.StringCheck;
+import and.utils.data.file2io2data.SharedUtils;
 import butterknife.Bind;
 import butterknife.OnClick;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
+import newbeemaster.com.nbdiycode.constant.SPConstant;
+import newbeemaster.com.nbdiycode.event.UserEvent;
+import newbeemaster.com.nbdiycode.util.IntentUtil;
 import newbeemaster.com.nbdiycode.utils.RxComposes;
 import zone.com.sdk.Diycode;
 import zone.com.sdk.base.extra.CacheUtil;
@@ -65,6 +71,18 @@ public class LoginActvity extends BaseNBActivity {
                 .compose(RxComposes.applyObservableAsync())
                 .subscribe(token -> {
                             new CacheUtil(this).saveToken(token);
+                            Diycode.getInstance().getMe()
+                                    .compose(bindToLifecycle())
+                                    .compose(RxComposes.applyObservableAsync())
+                                    .subscribe(userDetail -> {
+                                                EventBus.getDefault().post(new UserEvent(userDetail));
+                                                SharedUtils.put(SPConstant.USER_DETAIL, userDetail);
+                                            },
+                                            throwable -> {
+                                                ToastUtils.showShort(this, "用户信息获取异常！");
+                                            });
+
+                            finish();
                         }
                         , throwable -> {
                             ZLog.e("登录失败：" + throwable.getMessage());
@@ -76,5 +94,6 @@ public class LoginActvity extends BaseNBActivity {
 
     @OnClick(R.id.sign_up)
     public void onSignUpClicked() {
+        IntentUtil.openUrl(this, "https://www.diycode.cc/account/sign_up");
     }
 }

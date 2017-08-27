@@ -64,6 +64,9 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'org.greenrobot:eventbus:3.0.0'
 
+    //web带回退历史的
+    compile 'com.android.support:customtabs:25.0.0'
+
 
     // If you want pre-written Activities and Fragments you can subclass as providers
     compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
