@@ -3,13 +3,13 @@ package newbeemaster.com.nbdiycode.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import com.trello.rxlifecycle2.components.support.RxFragment;
 import com.zone.adapter3.QuickRcvAdapter;
 import com.zone.adapter3.base.IAdapter;
 import java.util.ArrayList;
@@ -21,7 +21,6 @@ import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.fragment.adapter.TopicListDelegates;
 import retrofit2.Call;
 import zone.com.retrofit.base.ZonePullView;
-import zone.com.retrofit.views.LoadingAnimView;
 import zone.com.sdk.API.topic.bean.Topic;
 import zone.com.sdk.Diycode;
 import zone.com.zrefreshlayout.ZRefreshLayout;
@@ -30,7 +29,7 @@ import zone.com.zrefreshlayout.ZRefreshLayout;
  * [2017] by Zone
  */
 
-public class TopicListFragment extends RxFragment {
+public class TopicListFragment extends Fragment {
     @Bind(R.id.rv)
     RecyclerView rv;
     @Bind(R.id.refresh)
@@ -64,7 +63,7 @@ public class TopicListFragment extends RxFragment {
             @NonNull
             @Override
             protected Call<List<Topic>> request(int offset, int limit) {
-                return Diycode.getInstance().getTopicsList(null, null, offset, limit);
+                return Diycode.getInstance().getTopicsList(null, null, offset, limit) ;
             }
 
             @Override
@@ -76,7 +75,6 @@ public class TopicListFragment extends RxFragment {
         zonePullView.firstLoading(0, LoadingLayout.wrap(llRoot));
 
     }
-
 
     @Override
     public void onDestroyView() {
