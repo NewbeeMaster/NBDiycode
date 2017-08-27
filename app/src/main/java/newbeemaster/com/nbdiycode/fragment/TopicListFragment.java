@@ -33,8 +33,6 @@ import zone.com.zrefreshlayout.ZRefreshLayout;
 public class TopicListFragment extends RxFragment {
     @Bind(R.id.rv)
     RecyclerView rv;
-    @Bind(R.id.loading)
-    LoadingAnimView loading;
     @Bind(R.id.refresh)
     ZRefreshLayout refresh;
     @Bind(R.id.ll_root)
@@ -56,9 +54,6 @@ public class TopicListFragment extends RxFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //
-        loading.setNum(12);
-        loading.setHostRadius(60);
-        loading.setRadius(13);
         rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         adapter = new QuickRcvAdapter<>(view.getContext(), datas);

@@ -20,12 +20,6 @@
                 android:layout_height="match_parent"
                 android:text="Hello_world" />
 
-            <zone.com.retrofit.views.LoadingAnimView
-                android:id="@+id/loading"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#00ff00"
-                android:visibility="gone" />
 
         </zone.com.zrefreshlayout.ZRefreshLayout>
 
