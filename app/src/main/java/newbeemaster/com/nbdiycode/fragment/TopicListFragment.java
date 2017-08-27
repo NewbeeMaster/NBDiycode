@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-
 import com.trello.rxlifecycle2.components.support.RxFragment;
 import com.zone.adapter3.QuickRcvAdapter;
 import com.zone.adapter3.base.IAdapter;
@@ -83,11 +82,6 @@ public class TopicListFragment extends RxFragment {
 
     }
 
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-    }
 
     @Override
     public void onDestroyView() {
