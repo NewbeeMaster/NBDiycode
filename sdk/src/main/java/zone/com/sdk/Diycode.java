@@ -7,6 +7,10 @@ import java.util.List;
 
 import zone.com.sdk.API.login.api.LoginAPI;
 import zone.com.sdk.API.login.api.LoginImpl;
+import zone.com.sdk.API.news.api.NewsAPI;
+import zone.com.sdk.API.news.api.NewsImpl;
+import zone.com.sdk.API.sites.api.SitesAPI;
+import zone.com.sdk.API.sites.api.SitesImpl;
 import zone.com.sdk.API.token.api.TokenAPI;
 import zone.com.sdk.API.token.api.TokenImpl;
 import zone.com.sdk.API.topic.api.TopicAPI;
@@ -34,6 +38,8 @@ public class Diycode {
         entityList.add(new Entity(TokenAPI.class, new TokenImpl()));
         entityList.add(new Entity(LoginAPI.class, new LoginImpl()));
         entityList.add(new Entity(TopicAPI.class, new TopicImpl()));
+        entityList.add(new Entity(NewsAPI.class, new NewsImpl()));
+        entityList.add(new Entity(SitesAPI.class, new SitesImpl()));
     }
 
     static APICall mAPICall;

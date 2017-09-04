@@ -24,17 +24,21 @@ import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.constant.SPConstant;
 import newbeemaster.com.nbdiycode.event.UserEvent;
 import newbeemaster.com.nbdiycode.fragment.GuideFragment;
+import newbeemaster.com.nbdiycode.fragment.NewListFragment;
+import newbeemaster.com.nbdiycode.fragment.SiteListFragment;
 import newbeemaster.com.nbdiycode.fragment.TopicListFragment;
+import newbeemaster.com.nbdiycode.fragment.adapter.NewListDelegates;
 import newbeemaster.com.nbdiycode.util.SharedUtils;
 import zone.com.sdk.API.login.bean.UserDetail;
+import zone.com.sdk.API.sites.bean.SiteItem;
 
 public class MainActivity extends BaseNBActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private int mCurrentPosition = 0;
 
     private TopicListFragment mFragment1;
-    private GuideFragment mFragment2;
-    private GuideFragment mFragment3;
+    private NewListFragment mFragment2;
+    private SiteListFragment mFragment3;
 
     // view
     @Bind(R.id.toolbar)
@@ -86,8 +90,8 @@ public class MainActivity extends BaseNBActivity
         mViewPager.setOffscreenPageLimit(3); // 防止滑动到第三个页面时，第一个页面被销毁
 
         mFragment1 = new TopicListFragment();
-        mFragment2 = new GuideFragment();
-        mFragment3 = new GuideFragment();
+        mFragment2 = new NewListFragment();
+        mFragment3 = new SiteListFragment();
 
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             String[] types = {"Topics", "News", "Sites", "Test"};
