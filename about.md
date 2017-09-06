@@ -7,11 +7,11 @@
 * 主页(Hui)
     * 通知 (Zone)
     * 侧栏 (Hui)
-        * 登录 Zone
-        * 我的帖子(Hui)
-        * 我的收藏(Hui)
-        * 关于我们 (Hui)
-        * 设置 (Hui)
+        * 登录 Zone ✔️
+        * 我的帖子(Hui) ✔️
+        * 我的收藏(Hui) ✔️
+        * 关于我们 (Hui) ✔️
+        * 设置 (Hui) ✔️
     * tab (Hui)
         * topics(Zone) ✔️
             * 文章页面(Zone)
