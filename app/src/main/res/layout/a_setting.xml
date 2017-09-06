@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2017 GcsSloop
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Last modified 2017-03-22 04:30:23
+  ~
+  ~ GitHub:  https://github.com/GcsSloop
+  ~ Website: http://www.gcssloop.com
+  ~ Weibo:   http://weibo.com/GcsSloop
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/diy_white_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/diy_white_bg"
+                android:padding="12dp"
+                android:text="应用"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:id="@+id/clear_cache"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/diy_white"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="清除缓存"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/cache_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textSize="16sp"
+                    tools:text="1.00M"/>
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/diy_white"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@color/diy_gray"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/diy_white"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当前版本"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/app_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:checked="true"
+                    tools:text="v0.0.1"/>
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/diy_white"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@color/diy_gray"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/check_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/diy_white"
+                android:padding="16dp"
+                android:text="检测更新"
+                android:textSize="16sp"/>
+
+
+            <TextView
+                android:id="@+id/contribute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/diy_white"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="¥ 捐赠一杯咖啡"
+                android:textColor="#4AC432"
+                android:textSize="16sp"/>
+
+            <LinearLayout
+                android:id="@+id/user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/diy_white_bg"
+                    android:padding="12dp"
+                    android:text="用户"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/diy_white"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="退出登录"
+                    android:textColor="@color/diy_red"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified 2017-03-25 02:42:10
+ * Last modified 2017-04-09 20:47:16
  *
  * GitHub:  https://github.com/GcsSloop
  * Website: http://www.gcssloop.com
@@ -26,41 +26,34 @@ import android.view.View;
 import butterknife.OnClick;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
+import newbeemaster.com.nbdiycode.util.IntentUtil;
 
-public class AboutActivity extends BaseNBActivity implements View.OnClickListener {
+public class AboutActivity extends BaseNBActivity {
 
-    @OnClick({R.id.feed_back, R.id.github, R.id.contribute})
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.feed_back:
-//                IntentUtil.openUrl(this,"https://github.com/GcsSloop/diycode/issues/1");
-                break;
+    public void setContentView() {
+        setContentView(R.layout.a_about);
+    }
+
+    @Override
+    public void initData() {
+        setTitle("关于");
+    }
+
+    @OnClick({R.id.github, R.id.contribute})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
             case R.id.github:
-//                IntentUtil.openUrl(this,"https://github.com/GcsSloop");
+                IntentUtil.openUrl(this, "https://github.com/luhaoaimama1");
                 break;
             case R.id.contribute:
-//                IntentUtil.openAlipay(this);
+                IntentUtil.openAlipay(this);
                 break;
         }
     }
 
-    @Override
-    public void setContentView() {
-        smoothSwitchScreen();
-        setContentView(R.layout.activity_about);
-    }
 
 
-    @Override
-    public void initData() {
-//        setTitle("关于");
 
-    }
-
-    @Override
-    public void setListener() {
-
-    }
 }

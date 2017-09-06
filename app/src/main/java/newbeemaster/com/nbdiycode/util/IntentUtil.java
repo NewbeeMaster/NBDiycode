@@ -57,7 +57,7 @@ public class IntentUtil {
     public static void openAlipay(Context context) {
         if (isAvailable(context, "com.eg.android.AlipayGphone")) {
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            String QRCode = "HTTPS://QR.ALIPAY.COM/FKX07101FYSJGTNCAPQW39";
+            String QRCode = "HTTPS://QR.ALIPAY.COM/FKX04747ZSEDKJPKYWDP03";
             intent.setData(Uri.parse("alipayqr://platformapi/startapp?saId=10000007&qrcode=" + QRCode));
             context.startActivity(intent);
         } else {

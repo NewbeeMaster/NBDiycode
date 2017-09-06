@@ -5,10 +5,11 @@ import zone.com.sdk.API.news.api.NewsAPI;
 import zone.com.sdk.API.sites.api.SitesAPI;
 import zone.com.sdk.API.token.api.TokenAPI;
 import zone.com.sdk.API.topic.api.TopicAPI;
+import zone.com.sdk.API.user.api.UserAPI;
 
 /**
  * [2017] by Zone
  */
 
-public interface APICall extends TokenAPI,LoginAPI,TopicAPI,NewsAPI,SitesAPI {
+public interface APICall extends TokenAPI,LoginAPI,TopicAPI,NewsAPI,SitesAPI,UserAPI {
 }

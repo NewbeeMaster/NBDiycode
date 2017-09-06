@@ -28,7 +28,7 @@ public abstract class BasePullView<P, L, A, E, D> {
     public List<D> data;
     public L listView;
 
-    private int firstNumber = 5;
+    private int firstNumber = 0;
 
     protected int offset = firstNumber;
     protected int limit = 5;

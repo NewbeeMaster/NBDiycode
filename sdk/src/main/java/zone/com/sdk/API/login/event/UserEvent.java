@@ -1,4 +1,4 @@
-package newbeemaster.com.nbdiycode.event;
+package zone.com.sdk.API.login.event;
 
 import zone.com.sdk.API.login.bean.UserDetail;
 

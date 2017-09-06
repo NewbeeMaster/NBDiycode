@@ -2,13 +2,13 @@ package newbeemaster.com.nbdiycode.activity;
 
 import android.content.Intent;
 
+import com.zone.lib.utils.activity_fragment_ui.FragmentSwitcher;
+import com.zone.lib.utils.data.file2io2data.SharedUtils;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import and.base.activity.kinds.SwipeBackKind;
-import and.utils.activity_fragment_ui.FragmentSwitcher;
-import and.utils.data.file2io2data.SharedUtils;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.AnimSwitchEnum;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
@@ -27,9 +27,7 @@ public class GuideActivity extends BaseNBActivity {
 
     @Override
     public void setContentView() {
-        mKindControl.get(SwipeBackKind.class).setSwipeBackEnable(false);
 //        mKindControl.get(ScreenSettingKind.class).setFullScreen();
-        //todo  title 非空判断
 //        mKindControl.get(ScreenSettingKind.class).setNoTitle_AppCompatActivity();
         setContentView(R.layout.a_guide);
         registerEventBus();

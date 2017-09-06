@@ -23,10 +23,13 @@
 package zone.com.sdk.API.login.api;
 import android.support.annotation.NonNull;
 
+import org.greenrobot.eventbus.EventBus;
+
 import io.reactivex.Observable;
 import retrofit2.Call;
 import zone.com.retrofit.callwrapper.DialogCall;
 import zone.com.sdk.API.login.bean.UserDetail;
+import zone.com.sdk.API.login.event.UserEvent;
 import zone.com.sdk.API.token.bean.Token;
 import zone.com.sdk.base.BaseImpl;
 import zone.com.sdk.base.ConstantURL;
@@ -62,5 +65,15 @@ public class LoginImpl extends BaseImpl<LoginService> implements LoginAPI {
     @Override
     public boolean isLogin() {
         return !(mCacheUtil.getToken() == null);
+    }
+    /**
+     * 是否登录
+     *
+     * @return 是否登录
+     */
+    @Override
+    public void logout() {
+         mCacheUtil.clearToken();
+         EventBus.getDefault().post(new UserEvent(null));
     }
 }

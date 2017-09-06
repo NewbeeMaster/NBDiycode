@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
@@ -14,13 +17,17 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
+import com.zone.lib.base.activity.BaseAppCompatActivity;
+import com.zone.lib.base.activity.kinds.SwipeBackKind;
 
 import org.greenrobot.eventbus.EventBus;
 
-import and.base.activity.BaseAppCompatActivity;
+import java.io.Serializable;
+
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
+import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.util.ViewHolder;
 
 /**
@@ -44,8 +51,41 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
     }
 
     @Override
+    public void kindsOnCreate() {
+        super.kindsOnCreate();
+        mKindControl.get(SwipeBackKind.class).setSwipeBackEnable(false);
+    }
+
+    @Override
     public void findIDs() {
         ButterKnife.bind(this);
+        initActionBar(R.id.toolbar);
+    }
+
+    @Override
+    public void setListener() {
+
+    }
+    // 初始化 ActiobBar
+    private void initActionBar(int toolbar) {
+        if (findViewById(toolbar) != null) {
+            setSupportActionBar((Toolbar) findViewById(toolbar));
+        }
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    // 默认点击左上角是结束当前 Activity
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -116,13 +156,41 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
         super.onStop();
     }
 
-    public  void openActivity(Context context, Class<?> cls) {
+    public void openActivity(Context context, Class<?> cls) {
         Intent intent = new Intent(context, cls);
         context.startActivity(intent);
     }
 
-    public  void openActivity(Class<?> cls) {
+    public void openActivity(Class<?> cls) {
         Intent intent = new Intent(this, cls);
+        this.startActivity(intent);
+    }
+
+    public <T> void openActivity(Class<?> cls, String name, T value) {
+        Intent intent = new Intent(this, cls);
+        if (value == null) {
+            throw new RuntimeException("the put value type can't support.");
+        } else {
+            if (value.getClass() == Boolean.class) {
+                intent.putExtra(name, (Boolean) value);
+            } else if (value.getClass() == Float.class) {
+                intent.putExtra(name, (Float) value);
+            } else if (value.getClass() == Integer.class) {
+                intent.putExtra(name, (Integer) value);
+            } else if (value.getClass() == Long.class) {
+                intent.putExtra(name, (Long) value);
+            } else if (value.getClass() == String.class) {
+                intent.putExtra(name, (String) value);
+            } else {
+                throw new RuntimeException("the put value type can't support.");
+            }
+        }
+        this.startActivity(intent);
+    }
+
+    public <T> void openActivity(Class<?> cls, String name, Serializable value) {
+        Intent intent = new Intent(this, cls);
+        intent.putExtra(name, value);
         this.startActivity(intent);
     }
 

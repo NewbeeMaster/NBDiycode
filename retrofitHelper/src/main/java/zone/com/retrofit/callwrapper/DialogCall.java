@@ -122,6 +122,12 @@ public class DialogCall<T> implements Call<T> {
         return this;
     }
 
+    public DialogCall<T> loading(@NonNull final LoadingLayout loadingLayout) {
+        this.mLoadingLayout = loadingLayout;
+        return this;
+    }
+
+
     public DialogCall<T> dialog(@NonNull final Dialog dialog) {
         this.mDialog = dialog;
         return this;

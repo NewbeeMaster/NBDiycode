@@ -22,86 +22,111 @@
 
 package newbeemaster.com.nbdiycode.activity;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.widget.LinearLayout;
 
+import com.zone.adapter3.QuickRcvAdapter;
+import com.zone.adapter3.base.IAdapter;
+import com.zone.lib.utils.data.file2io2data.SharedUtils;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
+import ezy.ui.layout.LoadingLayout;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
-import newbeemaster.com.nbdiycode.util.DataCache;
+import newbeemaster.com.nbdiycode.constant.SPConstant;
+import newbeemaster.com.nbdiycode.fragment.adapter.TopicListDelegates;
+import retrofit2.Call;
+import zone.com.retrofit.base.ZonePullView;
+import zone.com.sdk.API.login.bean.UserDetail;
+import zone.com.sdk.API.topic.bean.Topic;
+import zone.com.sdk.Diycode;
+import zone.com.zrefreshlayout.ZRefreshLayout;
 
 public class MyTopicActivity extends BaseNBActivity {
-    private DataCache mDataCache;
+    @Bind(R.id.rv)
+    RecyclerView rv;
+    @Bind(R.id.refresh)
+    ZRefreshLayout refresh;
+    @Bind(R.id.ll_root)
+    LinearLayout llRoot;
 
-    // 数据类型
-    enum InfoType {
-        MY_TOPIC, MY_COLLECT
-    }
+    private IAdapter<Topic> adapter;
+    private List<Topic> datas = new ArrayList<>();
+    private InfoType type;
 
-    private InfoType current_type = InfoType.MY_TOPIC;
 
-    public static void newInstance(Context context, InfoType type) {
-        Intent intent = new Intent(context, MyTopicActivity.class);
-        intent.putExtra("type", type);
-        context.startActivity(intent);
+    public enum InfoType  implements Serializable{
+        MY_TOPIC("我的帖子"), MY_COLLECT("我的收藏");
+        private String content;
+
+        InfoType(String content) {
+            this.content = content;
+        }
+
+        public Call<List<Topic>> request(int offset, int limit) {
+            UserDetail userDetail = SharedUtils.get(SPConstant.USER_DETAIL, UserDetail.class);
+            Call<List<Topic>> result = null;
+            switch (content) {
+                case "我的帖子":
+                    result = Diycode.getInstance()
+                            .getUserCreateTopicList(userDetail.getLogin(), null, offset, limit);
+                    break;
+                case "我的收藏":
+                    result = Diycode.getInstance()
+                            .getUserCollectionTopicList(userDetail.getLogin(), offset, limit);
+                    break;
+            }
+            return result;
+        }
+
     }
 
 
     @Override
     public void setContentView() {
-        setContentView(R.layout.activity_fragment);
+        setContentView(R.layout.a_common_my);
+         type = (InfoType) getIntent().getSerializableExtra("type");
     }
 
     @Override
     public void initData() {
-//        mDiycode = Diycode.getSingleInstance();
-        mDataCache = new DataCache(this);
-        Intent intent = getIntent();
-        InfoType type = (InfoType) intent.getSerializableExtra("type");
-        if (type != null) {
-            current_type = type;
-        } else {
-            current_type = InfoType.MY_TOPIC;
-        }
-        initViews();
+        setTitle(type.content);
+
+        rv.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter = new QuickRcvAdapter<>(this, datas);
+        adapter.addViewHolder(new TopicListDelegates())
+                .relatedList(rv);
+
+        final ZonePullView zonePullView = new ZonePullView<List<Topic>>(refresh, adapter) {
+            @NonNull
+            @Override
+            protected Call<List<Topic>> request(int offset, int limit) {
+                return type.request(offset, limit);
+            }
+
+            @Override
+            protected void handleData(int offset, List<Topic> body) {
+                datas.addAll(body);
+            }
+        };
+        zonePullView.firstLoading(0, LoadingLayout.wrap(llRoot));
+
     }
+
 
     @Override
     public void setListener() {
 
     }
 
-    protected void initViews() {
-//        if (!mDiycode.isLogin()) {
-//            toastShort("用户未登录");
-//            return;
-//        }
-//
-//        // 获取用户名
-//        if (mDataCache.getMe() == null) {
-//            try {
-//                UserDetail me = mDiycode.getMeNow();
-//                mDataCache.saveMe(me);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        String username = mDataCache.getMe().getLogin();
-
-        // 初始化 Fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-//        if (current_type == InfoType.MY_COLLECT){
-//            setTitle("我的收藏");
-//            UserCollectionTopicFragment fragment1 = UserCollectionTopicFragment.newInstance(username);
-//            transaction.add(R.id.fragment, fragment1);
-//        } else if (current_type == InfoType.MY_TOPIC){
-//            setTitle("我的话题");
-//            UserCreateTopicFragment fragment2 = UserCreateTopicFragment.newInstance(username);
-//            transaction.add(R.id.fragment, fragment2);
-//        }
-        transaction.commit();
-    }
 }

@@ -12,6 +12,7 @@ import zone.com.zrefreshlayout.ZRefreshLayout;
 
 /**
  * [2017] by Zone
+ * LoadingLayout 仅仅考虑第一次  第一次之后 则不考虑了
  */
 
 public abstract class ZonePullView<E> extends BasePullView<ZRefreshLayout, RecyclerView, IAdapter, E, Object> {

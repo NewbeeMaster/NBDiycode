@@ -4,8 +4,8 @@ import android.app.Application;
 import android.graphics.Color;
 
 import com.socks.library.ZLog;
+import com.zone.lib.Configuration;
 
-import and.Configuration;
 import zone.com.zrefreshlayout.Config;
 import zone.com.zrefreshlayout.footer.NullFooter;
 import zone.com.zrefreshlayout.header.MeterialHead;

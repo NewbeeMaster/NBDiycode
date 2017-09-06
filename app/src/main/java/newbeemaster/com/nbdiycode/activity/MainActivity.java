@@ -15,22 +15,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.zone.lib.utils.data.file2io2data.SharedUtils;
+
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import and.base.activity.kinds.SwipeBackKind;
 import butterknife.Bind;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.constant.SPConstant;
-import newbeemaster.com.nbdiycode.event.UserEvent;
-import newbeemaster.com.nbdiycode.fragment.GuideFragment;
+import zone.com.sdk.API.login.event.UserEvent;
 import newbeemaster.com.nbdiycode.fragment.NewListFragment;
 import newbeemaster.com.nbdiycode.fragment.SiteListFragment;
 import newbeemaster.com.nbdiycode.fragment.TopicListFragment;
-import newbeemaster.com.nbdiycode.fragment.adapter.NewListDelegates;
-import newbeemaster.com.nbdiycode.util.SharedUtils;
 import zone.com.sdk.API.login.bean.UserDetail;
-import zone.com.sdk.API.sites.bean.SiteItem;
+import zone.com.sdk.Diycode;
 
 public class MainActivity extends BaseNBActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -57,7 +55,6 @@ public class MainActivity extends BaseNBActivity
 
     @Override
     public void setContentView() {
-        mKindControl.get(SwipeBackKind.class).setSwipeBackEnable(false);
         setContentView(R.layout.a_main);
         registerEventBus();
     }
@@ -157,7 +154,7 @@ public class MainActivity extends BaseNBActivity
 
     // 加载侧边栏菜单数据(与用户相关的)
     private void loadMenuData(UserEvent mUserEvent) {
-        if (mUserEvent!=null) {
+        if (mUserEvent!=null&&mUserEvent.userDetail!=null) {
             username.setText(mUserEvent.userDetail.getName());
             tagline.setText(mUserEvent.userDetail.getTagline());
             Glide.with(this).load(mUserEvent.userDetail.getAvatar_url()).into(avatar);
@@ -211,27 +208,29 @@ public class MainActivity extends BaseNBActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-//        if (id == R.id.nav_post) {
-//            if (!mDiycode.isLogin()) {
-//                openActivity(LoginActivity.class);
-//                return true;
-//            }
-//            MyTopicActivity.newInstance(this, MyTopicActivity.InfoType.MY_TOPIC);
-//        } else if (id == R.id.nav_collect) {
-//            if (!mDiycode.isLogin()) {
-//                openActivity(LoginActivity.class);
-//                return true;
-//            }
-//            MyTopicActivity.newInstance(this, MyTopicActivity.InfoType.MY_COLLECT);
-//        } else if (id == R.id.nav_about) {
-//            openActivity(AboutActivity.class);
-//        } else if (id == R.id.nav_setting) {
-//            openActivity(SettingActivity.class);
-//        }
+        if (id == R.id.nav_post) {
+            if (!isLogin())
+                openActivity(MyTopicActivity.class,"type",MyTopicActivity.InfoType.MY_TOPIC);
+        } else if (id == R.id.nav_collect) {
+            if (!isLogin())
+                openActivity(MyTopicActivity.class,"type",MyTopicActivity.InfoType.MY_COLLECT);
+        } else if (id == R.id.nav_about) {
+            openActivity(AboutActivity.class);
+        } else if (id == R.id.nav_setting) {
+            openActivity(SettingActivity.class);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private boolean isLogin() {
+        if (!Diycode.getInstance().isLogin()) {
+            openActivity(LoginActvity.class);
+            return true;
+        }
+        return false;
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
