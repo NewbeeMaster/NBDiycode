@@ -28,7 +28,9 @@ import android.support.annotation.Nullable;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Path;
 import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.topic.bean.Topic;
 
 
@@ -60,4 +62,11 @@ public interface UserAPI {
                                                    @Nullable Integer offset, @Nullable Integer limit);
 
 
+    /**
+     * 获取用户详细资料
+     *
+     * @param login_name 登录用户名(非昵称)
+     * @return 用户详情
+     */
+    DialogCall<UserDetail> getUser(String login_name);
 }

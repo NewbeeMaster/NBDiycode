@@ -1,4 +1,4 @@
-package newbeemaster.com.nbdiycode.fragment.adapter;
+package newbeemaster.com.nbdiycode.adapter;
 
 import android.view.View;
 import android.widget.ImageView;

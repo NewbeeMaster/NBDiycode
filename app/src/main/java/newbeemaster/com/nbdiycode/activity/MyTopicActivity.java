@@ -23,11 +23,8 @@
 package newbeemaster.com.nbdiycode.activity;
 
 import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.widget.LinearLayout;
 
 import com.zone.adapter3.QuickRcvAdapter;
@@ -43,7 +40,7 @@ import ezy.ui.layout.LoadingLayout;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.constant.SPConstant;
-import newbeemaster.com.nbdiycode.fragment.adapter.TopicListDelegates;
+import newbeemaster.com.nbdiycode.adapter.TopicListDelegates;
 import retrofit2.Call;
 import zone.com.retrofit.base.ZonePullView;
 import zone.com.sdk.API.login.bean.UserDetail;

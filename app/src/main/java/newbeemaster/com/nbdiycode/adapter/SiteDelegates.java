@@ -1,4 +1,4 @@
-package newbeemaster.com.nbdiycode.fragment.adapter;
+package newbeemaster.com.nbdiycode.adapter;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -10,7 +10,6 @@ import com.zone.adapter3.helper.Helper;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.util.IntentUtil;
 import zone.com.sdk.API.sites.bean.SiteItem;
-import zone.com.sdk.API.topic.bean.Topic;
 
 /**
  * [2017] by Zone

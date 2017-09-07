@@ -29,7 +29,9 @@ import android.support.annotation.Nullable;
 import java.io.IOException;
 import java.util.List;
 
+import retrofit2.http.Path;
 import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.topic.bean.Topic;
 import zone.com.sdk.base.BaseImpl;
 
@@ -64,4 +66,11 @@ public class UserImpl extends BaseImpl<UserService> implements UserAPI {
                                          @Nullable Integer offset, @Nullable Integer limit) {
         return  dialogWrapper(mService.getUserCreateTopicList(login_name, order, offset, limit));
     }
+
+    @Override
+    public DialogCall<UserDetail> getUser(String login_name) {
+        return dialogWrapper(mService.getUser(login_name));
+    }
+
+
 }

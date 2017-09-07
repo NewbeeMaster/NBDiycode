@@ -18,7 +18,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import ezy.ui.layout.LoadingLayout;
 import newbeemaster.com.nbdiycode.R;
-import newbeemaster.com.nbdiycode.fragment.adapter.TopicListDelegates;
+import newbeemaster.com.nbdiycode.adapter.TopicListDelegates;
 import retrofit2.Call;
 import zone.com.retrofit.base.ZonePullView;
 import zone.com.sdk.API.topic.bean.Topic;

@@ -1,4 +1,4 @@
-package newbeemaster.com.nbdiycode.fragment.adapter;
+package newbeemaster.com.nbdiycode.adapter;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -7,6 +7,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.zone.adapter3.bean.ViewDelegates;
 import com.zone.adapter3.helper.Helper;
 import newbeemaster.com.nbdiycode.R;
+import newbeemaster.com.nbdiycode.activity.UserActivity;
 import newbeemaster.com.nbdiycode.util.TimeUtil;
 import zone.com.sdk.API.login.bean.User;
 import zone.com.sdk.API.topic.bean.Topic;
@@ -49,10 +50,10 @@ public class TopicListDelegates extends ViewDelegates<Topic> {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-//                    case R.id.avatar:
-//                    case R.id.username:
-//                        UserActivity.newInstance(mContext, user);
-//                        break;
+                    case R.id.avatar:
+                    case R.id.username:
+                        UserActivity.newInstance(context, user);
+                        break;
 //                    case R.id.item:
 //                        TopicContentActivity.newInstance(mContext, bean);
 //                        break;

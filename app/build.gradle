@@ -53,8 +53,8 @@ dependencies {
 
 
     //Z系列
-    compile 'com.github.luhaoaimama1:ZRefreshLayout:1.0.17'
-    compile 'com.github.luhaoaimama1:ZAdapter3:1.0.7'
+    compile 'com.github.luhaoaimama1:ZRefreshLayout:1.0.18'
+    compile 'com.github.luhaoaimama1:ZAdapter3:1.0.71'
     compile 'com.github.luhaoaimama1:ZLog:1.0.1'
     compile 'com.github.luhaoaimama1:Zbanner:1.0.2'
     compile 'com.github.luhaoaimama1:zone-sdk:1.0.93'
@@ -70,5 +70,7 @@ dependencies {
     // If you want pre-written Activities and Fragments you can subclass as providers
     compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
 
+    compile 'com.makeramen:roundedimageview:2.3.0'
+    compile 'com.github.florent37:expectanim:1.0.7'
     compile project(':sdk')
 }

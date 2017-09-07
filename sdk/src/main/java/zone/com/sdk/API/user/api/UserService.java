@@ -28,6 +28,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.topic.bean.Topic;
 
 interface UserService {
@@ -60,5 +61,13 @@ interface UserService {
     Call<List<Topic>> getUserCreateTopicList(@Path("login") String login_name, @Query("order") String order,
                                              @Query("offset") Integer offset, @Query("limit") Integer limit);
 
+    /**
+     * 获取用户详细资料
+     *
+     * @param login_name 登录用户名(非昵称)
+     * @return 用户详情
+     */
+    @GET("users/{login}.json")
+    Call<UserDetail> getUser(@Path("login") String login_name);
 
 }

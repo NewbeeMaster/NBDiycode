@@ -14,11 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.zone.lib.utils.data.file2io2data.SharedUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.Bind;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
@@ -72,7 +74,8 @@ public class MainActivity extends BaseNBActivity
     @Override
     public void initData() {
         initMenu();
-        loadMenuData(new UserEvent(SharedUtils.get(SPConstant.USER_DETAIL,UserDetail.class)));
+        loadMenuData(new UserEvent(Diycode.getInstance()
+                .isLogin() ? SharedUtils.get(SPConstant.USER_DETAIL, UserDetail.class) : null));
         initViewPager();
     }
 
@@ -154,7 +157,7 @@ public class MainActivity extends BaseNBActivity
 
     // 加载侧边栏菜单数据(与用户相关的)
     private void loadMenuData(UserEvent mUserEvent) {
-        if (mUserEvent!=null&&mUserEvent.userDetail!=null) {
+        if (mUserEvent != null && mUserEvent.userDetail != null) {
             username.setText(mUserEvent.userDetail.getName());
             tagline.setText(mUserEvent.userDetail.getTagline());
             Glide.with(this).load(mUserEvent.userDetail.getAvatar_url()).into(avatar);
@@ -191,14 +194,11 @@ public class MainActivity extends BaseNBActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-//            openActivity(SettingActivity.class);
+            openActivity(SettingActivity.class);
             return true;
         } else if (id == R.id.action_notification) {
-//            if (!mDiycode.isLogin()) {
-//                openActivity(LoginActivity.class);
-//            } else {
-//                openActivity(NotificationActivity.class);
-//            }
+            if (!isLogin())
+                openActivity(NotificationActivity.class);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -210,10 +210,10 @@ public class MainActivity extends BaseNBActivity
 
         if (id == R.id.nav_post) {
             if (!isLogin())
-                openActivity(MyTopicActivity.class,"type",MyTopicActivity.InfoType.MY_TOPIC);
+                openActivity(MyTopicActivity.class, "type", MyTopicActivity.InfoType.MY_TOPIC);
         } else if (id == R.id.nav_collect) {
             if (!isLogin())
-                openActivity(MyTopicActivity.class,"type",MyTopicActivity.InfoType.MY_COLLECT);
+                openActivity(MyTopicActivity.class, "type", MyTopicActivity.InfoType.MY_COLLECT);
         } else if (id == R.id.nav_about) {
             openActivity(AboutActivity.class);
         } else if (id == R.id.nav_setting) {
