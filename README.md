@@ -1,8 +1,8 @@
 # 任务领取
 
-* 架构(Zone):BaseActivity,网络
+* 架构(Zone):BaseActivity,网络  ✔️
 
-* 引导页(Zone):
+* 引导页(Zone):  ✔️
 
 * 主页(Hui)
     * 通知 (Zone)  ✔️
