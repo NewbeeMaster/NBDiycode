@@ -25,6 +25,7 @@ import butterknife.Bind;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.constant.SPConstant;
+import newbeemaster.com.nbdiycode.event.DataUpdateEvent;
 import zone.com.sdk.API.login.event.UserEvent;
 import newbeemaster.com.nbdiycode.fragment.NewListFragment;
 import newbeemaster.com.nbdiycode.fragment.SiteListFragment;

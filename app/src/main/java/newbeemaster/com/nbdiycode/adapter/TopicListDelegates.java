@@ -7,6 +7,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.zone.adapter3.bean.ViewDelegates;
 import com.zone.adapter3.helper.Helper;
 import newbeemaster.com.nbdiycode.R;
+import newbeemaster.com.nbdiycode.activity.TopicContentActivity;
 import newbeemaster.com.nbdiycode.activity.UserActivity;
 import newbeemaster.com.nbdiycode.util.TimeUtil;
 import zone.com.sdk.API.login.bean.User;
@@ -54,9 +55,9 @@ public class TopicListDelegates extends ViewDelegates<Topic> {
                     case R.id.username:
                         UserActivity.newInstance(context, user);
                         break;
-//                    case R.id.item:
-//                        TopicContentActivity.newInstance(mContext, bean);
-//                        break;
+                    case R.id.item:
+                        TopicContentActivity.newInstance(context, bean);
+                        break;
 //                    case R.id.node_name:
 //                        TopicActivity.newInstance(mContext, bean.getNode_id(), bean.getNode_name());
 //                        break;

@@ -31,6 +31,9 @@ import com.zone.adapter3.QuickRcvAdapter;
 import com.zone.adapter3.base.IAdapter;
 import com.zone.lib.utils.data.file2io2data.SharedUtils;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,7 @@ import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.constant.SPConstant;
 import newbeemaster.com.nbdiycode.adapter.TopicListDelegates;
+import newbeemaster.com.nbdiycode.event.DataUpdateEvent;
 import retrofit2.Call;
 import zone.com.retrofit.base.ZonePullView;
 import zone.com.sdk.API.login.bean.UserDetail;
@@ -91,6 +95,7 @@ public class MyTopicActivity extends BaseNBActivity {
     @Override
     public void setContentView() {
         setContentView(R.layout.a_common_my);
+        registerEventBus();
          type = (InfoType) getIntent().getSerializableExtra("type");
     }
 
@@ -124,6 +129,16 @@ public class MyTopicActivity extends BaseNBActivity {
     @Override
     public void setListener() {
 
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public synchronized void onDataUpdateEventEvent(DataUpdateEvent event) {
+        for (Topic data : datas) {
+            if(data.getId()==event.topicId)
+                data.setReplies_count(data.getReplies_count()+1);
+        }
+        adapter.notifyDataSetChanged();
     }
 
 }

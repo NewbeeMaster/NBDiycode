@@ -12,6 +12,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import com.zone.adapter3.QuickRcvAdapter;
 import com.zone.adapter3.base.IAdapter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.Bind;
@@ -19,6 +24,7 @@ import butterknife.ButterKnife;
 import ezy.ui.layout.LoadingLayout;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.adapter.TopicListDelegates;
+import newbeemaster.com.nbdiycode.event.DataUpdateEvent;
 import retrofit2.Call;
 import zone.com.retrofit.base.ZonePullView;
 import zone.com.sdk.API.topic.bean.Topic;
@@ -46,6 +52,7 @@ public class TopicListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_list, null);
         ButterKnife.bind(this, rootView);
+        EventBus.getDefault().register(this);
         return rootView;
     }
 
@@ -80,6 +87,16 @@ public class TopicListFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public synchronized void onDataUpdateEventEvent(DataUpdateEvent event) {
+        for (Topic data : datas) {
+            if(data.getId()==event.topicId)
+                data.setReplies_count(data.getReplies_count()+1);
+        }
+        adapter.notifyDataSetChanged();
     }
 
 }

@@ -33,6 +33,8 @@
         <activity android:name=".activity.SettingActivity"></activity>
         <activity android:name=".activity.NotificationActivity"></activity>
         <activity android:name=".activity.UserActivity"></activity>
+        <activity android:name=".activity.TopicContentActivity"></activity>
+        <activity android:name=".activity.ImageActivity"></activity>
     </application>
 
 </manifest>
