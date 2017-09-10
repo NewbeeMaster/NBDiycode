@@ -25,5 +25,8 @@
 - [ ] 沉浸式状态栏  请看 云音乐(Zone)
 
 - [ ] 切换主题；颜色，资源更换  。色盘包 和  资源包，夜间模式(Hui)
+
+//todo 剩下todo的完成。  沉浸式  切换主题？有时间弄
+
 http://blog.csdn.net/tuhuolong/article/details/52384417
 
