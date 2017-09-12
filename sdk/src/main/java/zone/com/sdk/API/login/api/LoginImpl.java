@@ -26,7 +26,6 @@ import android.support.annotation.NonNull;
 import org.greenrobot.eventbus.EventBus;
 
 import io.reactivex.Observable;
-import retrofit2.Call;
 import zone.com.retrofit.callwrapper.DialogCall;
 import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.login.event.UserEvent;

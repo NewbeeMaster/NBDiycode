@@ -4,7 +4,6 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
-
 import zone.com.sdk.API.login.api.LoginAPI;
 import zone.com.sdk.API.login.api.LoginImpl;
 import zone.com.sdk.API.news.api.NewsAPI;
@@ -37,6 +36,7 @@ public class Diycode {
             this.instance = instance;
         }
     }
+
 
     static {
         entityList.add(new Entity(TokenAPI.class, new TokenImpl()));
@@ -80,6 +80,7 @@ public class Diycode {
 
 
     public static void main(String[] args) {
+
         Diycode aPIController = new Diycode();
         InvocationHandler handler = new DyHandler(aPIController);
 
@@ -93,7 +94,14 @@ public class Diycode {
                 new Class<?>[]{APICall.class}, handler);
 
 //        proxy.getPics("5", "5", 2);
-//        proxy.getPics("5", "5");
+//        proxy.getSites()
+//                .enqueueObservable()
+//                .subscribe(new Consumer<List<Sites>>() {
+//                    @Override
+//                    public void accept(List<Sites> sites) throws Exception {
+//                        System.out.println(sites);
+//                    }
+//                });
     }
 
 }

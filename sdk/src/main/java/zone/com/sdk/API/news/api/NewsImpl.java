@@ -22,11 +22,10 @@
 
 package zone.com.sdk.API.news.api;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import java.util.List;
-import retrofit2.Call;
+
 import zone.com.retrofit.callwrapper.DialogCall;
 import zone.com.sdk.API.news.bean.New;
 import zone.com.sdk.base.BaseImpl;

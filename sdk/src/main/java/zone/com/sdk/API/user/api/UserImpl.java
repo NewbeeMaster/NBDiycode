@@ -22,14 +22,11 @@
 
 package zone.com.sdk.API.user.api;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import java.io.IOException;
 import java.util.List;
 
-import retrofit2.http.Path;
 import zone.com.retrofit.callwrapper.DialogCall;
 import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.topic.bean.Topic;

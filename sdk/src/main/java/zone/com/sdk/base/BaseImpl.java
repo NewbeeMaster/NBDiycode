@@ -21,25 +21,16 @@
  */
 
 package zone.com.sdk.base;
-
-import android.content.Context;
-
-import java.io.File;
-import java.lang.reflect.ParameterizedType;
 import java.util.concurrent.TimeUnit;
-
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import zone.com.retrofitlib.BaseNetwork;
+import zone.com.retrofitlib.RunConfig;
 import zone.com.sdk.base.extra.CacheUtil;
 import zone.com.sdk.base.extra.TokenInterceptor;
 import zone.com.sdk.base.extra.ZAuthenticator;
 import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.Retrofit;
-import zone.com.retrofitlib.RunConfig;
-import zone.com.retrofit.callwrapper.DialogCall;
-import zone.com.retrofitlib.callwrapper.DownLoadCall;
 import zone.com.retrofitlib.Config;
 import zone.com.retrofitlib.cookie.CookieJarImpl;
 import zone.com.retrofitlib.cookie.store.SPCookieStore;
@@ -50,34 +41,22 @@ import zone.com.retrofitlib.utils.RetrofitHelper;
  *
  * @param <Service>
  */
-public class BaseImpl<Service> {
+public class BaseImpl<Service> extends BaseNetwork<Service> {
 
-    private Context context;
     protected CacheUtil mCacheUtil;
-    private static Retrofit mRetrofit;
-    protected Service mService;
 
-    public BaseImpl() {
-
+    @Override
+    protected void initConfig() {
         if (RunConfig.isAPP) {
-            context = Config.getInstance().getContext();
-            if (context == null)
+            if (context == null) {
                 throw new IllegalStateException("Please use method Config.getInstance().setContext(context)");
+            }
             mCacheUtil = new CacheUtil(context);
         }
-        initRetrofit();
-        this.mService = mRetrofit.create(getServiceClass());
-
     }
 
-    private Class<Service> getServiceClass() {
-        return (Class<Service>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-    }
-
-    //todo 更改的配置在这里
-    private synchronized void initRetrofit() {
-        if (null != mRetrofit)
-            return;
+    @Override
+    protected Retrofit initRetrofit() {
 
         boolean isDebug = Config.getInstance().isDebug();
 
@@ -100,7 +79,7 @@ public class BaseImpl<Service> {
         // 配置 client
         OkHttpClient client = builder.build();
         // 配置 Retrofit
-        mRetrofit = new Retrofit.Builder()
+        return new Retrofit.Builder()
                 //todo  url debug模式  在之类修改 不能用拦截器修改  因为url不同的话 拦截器会报错
 //                .baseUrl(isDebug ? "http://debug.gank.io/api/data/福利/" : "http://gank.io/api/data/福利/")                         // 设置 base url
                 .baseUrl(ConstantURL.BASE_URL)                         // 设置 base url
@@ -110,17 +89,6 @@ public class BaseImpl<Service> {
                 .build();
     }
 
-    protected <T> DialogCall<T> dialogWrapper(Call<T> call) {
-        return new DialogCall(call);
-    }
-
-    protected DownLoadCall downLoadWrapper(Call call, File file) {
-        return new DownLoadCall((Call<ResponseBody>) call, file);
-    }
-
-    public static Retrofit getRetrofit() {
-        return mRetrofit;
-    }
 }
 
 

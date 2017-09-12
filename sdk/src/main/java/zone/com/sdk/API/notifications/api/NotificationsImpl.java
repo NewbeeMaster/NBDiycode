@@ -22,7 +22,6 @@
 
 package zone.com.sdk.API.notifications.api;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 
 import java.util.List;

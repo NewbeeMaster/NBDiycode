@@ -22,9 +22,6 @@
 
 package zone.com.sdk.API.sites.api;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
-
 import java.util.List;
 
 import zone.com.retrofit.callwrapper.DialogCall;
