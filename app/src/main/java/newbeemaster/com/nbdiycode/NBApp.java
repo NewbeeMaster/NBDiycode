@@ -26,7 +26,6 @@ public class NBApp extends Application {
     }
 
     private void initConfig() {
-        //todo SHARED_NAME更改成非 final类
 //        SharedUtils.SHARED_NAME="NBDiycode";
         Configuration.Build.init(this).perform();
 

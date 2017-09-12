@@ -74,6 +74,7 @@ public class BaseImpl<Service> {
         return (Class<Service>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
+    //todo 更改的配置在这里
     private synchronized void initRetrofit() {
         if (null != mRetrofit)
             return;

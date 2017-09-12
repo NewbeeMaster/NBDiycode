@@ -71,7 +71,7 @@ public class NewListFragment extends Fragment {
                 datas.addAll(body);
             }
         };
-        //todo 对于fragment 不要直接替换他的child 会导致新的view高度为0 所以加一层在下面那层作怪~
+        // 对于fragment 不要直接替换他的child 会导致新的view高度为0 所以加一层在下面那层作怪~
         zonePullView.firstLoading(0, LoadingLayout.wrap(llRoot));
 
     }
