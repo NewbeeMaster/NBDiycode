@@ -53,15 +53,12 @@ public abstract class BaseNetwork<Service> {
 
     }
 
-
-
     private Class<Service> getServiceClass() {
         return (Class<Service>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     protected abstract void initConfig();
 
-    //todo 更改的配置在这里
     private synchronized void initRetrofitInner() {
         if (null != mRetrofit)
             return;
