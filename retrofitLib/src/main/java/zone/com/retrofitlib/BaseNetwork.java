@@ -29,7 +29,7 @@ import java.lang.reflect.ParameterizedType;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 import zone.com.retrofitlib.callwrapper.DownLoadCall;
 
 /**

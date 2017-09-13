@@ -1,4 +1,4 @@
-package zone.com.retrofitlib.utils;
+package zone.com.retrofitlib;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 

@@ -4,7 +4,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import zone.com.retrofitlib.RunConfig;
-import zone.com.retrofit.utils.HandlerUiUtil;
+import zone.com.retrofitlib.utils.HandlerUiUtil;
 
 /**
  * Created by Zone on 2016/3/17.

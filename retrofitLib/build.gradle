@@ -28,7 +28,26 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
+
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    // 版本问题 :https://stackoverflow.com/questions/41140203/using-rxjava-2-and-retrofit-2-adapter-version-issue
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0' // works with RxJava 2
+//    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0' // won't work with RxJava 2
+
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+
+// Because RxAndroid releases are few and far between, it is recommended you also
+// explicitly depend on RxJava's latest version for bug fixes and new features.
+    compile 'io.reactivex.rxjava2:rxjava:2.1.1'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.github.czy1121:loadinglayout:1.0.1'
+
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+
 //    compile project(':retrofitHelper')
 }
+
+

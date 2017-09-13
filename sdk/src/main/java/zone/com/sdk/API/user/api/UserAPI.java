@@ -29,7 +29,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Path;
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.topic.bean.Topic;
 
@@ -47,7 +47,7 @@ public interface UserAPI {
      * @param limit      数量极限，默认值 20，值范围 1..150
      */
     DialogCall<List<Topic>> getUserCollectionTopicList(@NonNull String login_name,
-                                                 @Nullable Integer offset, @Nullable Integer limit);
+                                                       @Nullable Integer offset, @Nullable Integer limit);
 
 
     /**

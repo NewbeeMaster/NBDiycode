@@ -27,7 +27,7 @@ import android.support.annotation.NonNull;
 import java.util.List;
 
 import retrofit2.Call;
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 import zone.com.sdk.API.notifications.bean.Notification;
 
 

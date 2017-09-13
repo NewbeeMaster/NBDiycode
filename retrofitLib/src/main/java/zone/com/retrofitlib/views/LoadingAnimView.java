@@ -1,4 +1,4 @@
-package zone.com.retrofit.views;
+package zone.com.retrofitlib.views;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;

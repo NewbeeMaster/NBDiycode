@@ -1,4 +1,4 @@
-package zone.com.retrofit.base;
+package zone.com.retrofit;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,12 +9,13 @@ import ezy.ui.layout.LoadingLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 
 /**
  * A listview that package a t
  * BasePullView(context,pullView,listView,adapter,data,ParseDataListener).bindEngine();
  *
+ * [2017] by Zone
  * @param <P>
  * @param <L>
  * @param <A>

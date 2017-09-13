@@ -1,9 +1,10 @@
-package zone.com.retrofit.views;
+package zone.com.retrofitlib.views;
 
 import android.app.Activity;
 import android.view.Gravity;
 import android.view.View;
-import zone.com.retrofit.R;
+
+import zone.com.retrofitlib.R;
 
 /**
  * [2017] by Zone

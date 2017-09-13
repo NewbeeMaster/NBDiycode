@@ -15,21 +15,17 @@ import zone.com.retrofitlib.callwrapper.upload.ProgressRequestBody;
 
 /**
  * Created by Zone on 2016/2/10.
+ * [2017] by Zone
+ *
+ * 主要是增加
+ *
+ * 支持上传功能
  */
 public class RequestBodyHelper {
+
     protected Map<String, String> paramsMap;
     protected Map<String, File> fileMap;
     protected Map<String, String> fileNameMap;
-//    protected String jsonStr;
-//
-//    public String getJsonStr() {
-//        return jsonStr;
-//    }
-//
-//    public RequestParams setJsonStr(String jsonStr) {
-//        this.jsonStr = jsonStr;
-//        return this;
-//    }
 
     private void file2NameMapChecked() {
         if (fileMap == null)

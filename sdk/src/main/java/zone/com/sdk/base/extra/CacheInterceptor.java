@@ -8,8 +8,8 @@ import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-import zone.com.retrofit.utils.Utils;
 import zone.com.retrofitlib.Config;
+import zone.com.retrofitlib.utils.Utils;
 
 /**
  * 为okhttp添加缓存，这里是考虑到服务器不支持缓存时，从而让okhttp支持缓存

@@ -28,7 +28,7 @@ import android.support.annotation.Nullable;
 import java.util.List;
 
 import retrofit2.Call;
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 import zone.com.sdk.API.news.bean.New;
 
 public interface NewsAPI {

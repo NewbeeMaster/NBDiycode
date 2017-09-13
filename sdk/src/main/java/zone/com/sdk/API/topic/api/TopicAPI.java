@@ -12,7 +12,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 import zone.com.sdk.API.topic.bean.Topic;
 import zone.com.sdk.API.topic.bean.TopicContent;
 import zone.com.sdk.API.topic.bean.TopicReply;

@@ -27,7 +27,7 @@ import android.support.annotation.NonNull;
 import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.token.bean.Token;
 

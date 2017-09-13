@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package zone.com.retrofit.callwrapper.helper;
+package zone.com.retrofitlib.callwrapper.rxjavahelper;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -24,7 +24,7 @@ import io.reactivex.plugins.RxJavaPlugins;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 
 public final class CallEnqueueObservable<T> extends Observable<T> {
 

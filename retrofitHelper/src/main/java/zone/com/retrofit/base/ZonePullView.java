@@ -7,7 +7,8 @@ import com.zone.adapter3.base.IAdapter;
 
 import retrofit2.Call;
 import retrofit2.Response;
-import zone.com.retrofit.utils.HandlerUiUtil;
+import zone.com.retrofit.BasePullView;
+import zone.com.retrofitlib.utils.HandlerUiUtil;
 import zone.com.zrefreshlayout.ZRefreshLayout;
 
 /**

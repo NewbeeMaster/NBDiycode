@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package zone.com.retrofit.callwrapper.helper;
+package zone.com.retrofitlib.callwrapper.rxjavahelper;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;

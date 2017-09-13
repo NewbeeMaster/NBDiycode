@@ -34,7 +34,7 @@ import retrofit2.Retrofit;
 import zone.com.retrofitlib.Config;
 import zone.com.retrofitlib.cookie.CookieJarImpl;
 import zone.com.retrofitlib.cookie.store.SPCookieStore;
-import zone.com.retrofitlib.utils.RetrofitHelper;
+import zone.com.retrofitlib.RetrofitHelper;
 
 /**
  * 实现类，具体实现在此处

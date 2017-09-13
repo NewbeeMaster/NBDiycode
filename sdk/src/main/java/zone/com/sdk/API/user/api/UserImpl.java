@@ -27,7 +27,7 @@ import android.support.annotation.Nullable;
 
 import java.util.List;
 
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.topic.bean.Topic;
 import zone.com.sdk.base.BaseImpl;

@@ -1,9 +1,9 @@
 package zone.com.sdk.API.token.api;
 
+import zone.com.retrofitlib.callwrapper.DialogCall;
 import zone.com.sdk.API.token.bean.Token;
 import zone.com.sdk.base.BaseImpl;
 import zone.com.sdk.base.ConstantURL;
-import zone.com.retrofit.callwrapper.DialogCall;
 
 /**
  * [2017] by Zone

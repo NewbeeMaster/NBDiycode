@@ -14,8 +14,17 @@ import zone.com.retrofitlib.RunConfig;
 import zone.com.retrofitlib.callwrapper.down.DownLoadUtils;
 import zone.com.retrofitlib.callwrapper.core.MainHandlerUtils;
 import zone.com.retrofitlib.callwrapper.core.ProgressCallback;
-import zone.com.retrofit.utils.ExecutorUtils;
+import zone.com.retrofitlib.utils.ExecutorUtils;
 
+
+
+/**
+ * [2017] by Zone
+ *
+ * 主要是增加
+ *
+ * 支持下载功能
+ */
 public class DownLoadCall implements Call<ResponseBody> {
 
     private final Call<ResponseBody> call;

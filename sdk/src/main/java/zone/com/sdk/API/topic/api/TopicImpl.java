@@ -5,7 +5,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 import zone.com.sdk.API.topic.bean.Topic;
 import zone.com.sdk.API.topic.bean.TopicContent;
 import zone.com.sdk.API.topic.bean.TopicReply;

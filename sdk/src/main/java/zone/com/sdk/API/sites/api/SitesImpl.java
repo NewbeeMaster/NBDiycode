@@ -24,7 +24,7 @@ package zone.com.sdk.API.sites.api;
 
 import java.util.List;
 
-import zone.com.retrofit.callwrapper.DialogCall;
+import zone.com.retrofitlib.callwrapper.DialogCall;
 import zone.com.sdk.API.sites.bean.Sites;
 import zone.com.sdk.base.BaseImpl;
 

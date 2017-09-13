@@ -1,22 +1,31 @@
-package zone.com.retrofit.callwrapper;
+package zone.com.retrofitlib.callwrapper;
 
 import android.app.Dialog;
 import android.support.annotation.NonNull;
 import android.view.View;
-
 import java.io.IOException;
-
 import ezy.ui.layout.LoadingLayout;
 import io.reactivex.Observable;
 import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import zone.com.retrofit.callwrapper.helper.CallEnqueueObservable;
-import zone.com.retrofit.callwrapper.helper.CallExecuteObservable;
-import zone.com.retrofit.utils.HandlerUiUtil;
-import zone.com.retrofit.views.BasePopWindow;
+import zone.com.retrofitlib.RunConfig;
+import zone.com.retrofitlib.callwrapper.rxjavahelper.CallEnqueueObservable;
+import zone.com.retrofitlib.callwrapper.rxjavahelper.CallExecuteObservable;
+import zone.com.retrofitlib.utils.HandlerUiUtil;
+import zone.com.retrofitlib.views.BasePopWindow;
 
+/**
+ * [2017] by Zone
+ *
+ * 主要是增加
+ *
+ * 支持rxjava2
+ * 支持 请求与dialog状态 的功能;
+ *
+ * @param <T>
+ */
 public class DialogCall<T> implements Call<T> {
 
     private Call<T> call;
@@ -205,6 +214,10 @@ public class DialogCall<T> implements Call<T> {
 
         @Override
         public void onLoading(final State state) {
+
+            if(!RunConfig.isAPP)
+                return;
+
             if (state != State.Loading)
                 HandlerUiUtil.postDelay(new Runnable() {
                     @Override
