@@ -1,3 +1,6 @@
+
+本项目是仿GcsSloop的Diycode项目,资源文件都是copy过来的。主要是为了应用测试我的项目框架而仿的;
+
 # 任务领取
 
 * 架构(Zone):BaseActivity,网络  ✔️
@@ -28,7 +31,9 @@
 
 //todo 剩下todo的完成。  沉浸式  切换主题？有时间弄
 
-
-
 http://blog.csdn.net/tuhuolong/article/details/52384417
 
+
+# Reference&Thanks：
+
+https://github.com/GcsSloop/diycode
