@@ -20,9 +20,9 @@ import ezy.ui.layout.LoadingLayout;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.adapter.NewListDelegates;
 import retrofit2.Call;
-import zone.com.retrofit.base.ZonePullView;
 import zone.com.sdk.API.news.bean.New;
 import zone.com.sdk.Diycode;
+import zone.com.zhelper.ZonePullView;
 import zone.com.zrefreshlayout.ZRefreshLayout;
 
 /**

@@ -29,14 +29,6 @@
 //todo 剩下todo的完成。  沉浸式  切换主题？有时间弄
 
 
--------------  首先要做的 -------------------
-
-1.RunConfig配置 UI APP兼容（DialogCall？等）
-
-2.hepler库与lib库的解耦 。hepler库提出一个core 这样lib和helper同时公用
-
-helper库可以开分支 完成Zone adapter3的 与其他；
-
 
 http://blog.csdn.net/tuhuolong/article/details/52384417
 

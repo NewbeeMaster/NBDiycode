@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NBDiycode.iml" filepath="$PROJECT_DIR$/NBDiycode.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/retrofitHelper/retrofitHelper.iml" filepath="$PROJECT_DIR$/retrofitHelper/retrofitHelper.iml" />
-      <module fileurl="file://$PROJECT_DIR$/retrofitLib/retrofitLib.iml" filepath="$PROJECT_DIR$/retrofitLib/retrofitLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdk/sdk.iml" filepath="$PROJECT_DIR$/sdk/sdk.iml" />
     </modules>
   </component>

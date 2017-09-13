@@ -30,5 +30,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
     compile 'org.greenrobot:eventbus:3.0.0'
-    compile project(':retrofitHelper')
+//    compile project(':retrofitHelper')
+    compile 'com.github.luhaoaimama1.RetrofitListHelper:zhelper:1.0.2'
+
+//    compile 'com.github.luhaoaimama1.RetrofitListHelper:retrofitLib:1.0.0'
 }

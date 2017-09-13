@@ -46,10 +46,10 @@ import newbeemaster.com.nbdiycode.constant.SPConstant;
 import newbeemaster.com.nbdiycode.adapter.TopicListDelegates;
 import newbeemaster.com.nbdiycode.event.DataUpdateEvent;
 import retrofit2.Call;
-import zone.com.retrofit.base.ZonePullView;
 import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.topic.bean.Topic;
 import zone.com.sdk.Diycode;
+import zone.com.zhelper.ZonePullView;
 import zone.com.zrefreshlayout.ZRefreshLayout;
 
 public class MyTopicActivity extends BaseNBActivity {

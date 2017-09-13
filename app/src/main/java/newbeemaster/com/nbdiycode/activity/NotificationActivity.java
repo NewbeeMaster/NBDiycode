@@ -14,9 +14,9 @@ import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.adapter.NotificationDelegates;
 import retrofit2.Call;
-import zone.com.retrofit.base.ZonePullView;
 import zone.com.sdk.API.notifications.bean.Notification;
 import zone.com.sdk.Diycode;
+import zone.com.zhelper.ZonePullView;
 import zone.com.zrefreshlayout.ZRefreshLayout;
 
 /**

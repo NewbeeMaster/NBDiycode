@@ -46,7 +46,7 @@ public class BaseImpl<Service> extends BaseNetwork<Service> {
     protected CacheUtil mCacheUtil;
 
     @Override
-    protected void initConfig() {
+    protected void onCreate() {
         if (RunConfig.isAPP) {
             if (context == null) {
                 throw new IllegalStateException("Please use method Config.getInstance().setContext(context)");
