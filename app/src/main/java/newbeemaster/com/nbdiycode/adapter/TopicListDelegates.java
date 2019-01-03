@@ -4,8 +4,8 @@ import android.view.View;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.zone.adapter3.bean.Holder;
 import com.zone.adapter3.bean.ViewDelegates;
-import com.zone.adapter3.helper.Helper;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.TopicContentActivity;
 import newbeemaster.com.nbdiycode.activity.UserActivity;
@@ -25,7 +25,7 @@ public class TopicListDelegates extends ViewDelegates<Topic> {
     }
 
     @Override
-    public void fillData(int i, Topic bean, Helper<Helper> holder) {
+    public void fillData(int postion, Topic bean, Holder holder) {
         final User user = bean.getUser();
         holder.setText(R.id.username, user.getLogin());
         holder.setText(R.id.node_name, bean.getNode_name());
@@ -33,7 +33,7 @@ public class TopicListDelegates extends ViewDelegates<Topic> {
         holder.setText(R.id.title, bean.getTitle());
 
         // 加载头像
-        ImageView imageView = holder.getView(R.id.avatar);
+        ImageView imageView = (ImageView) holder.getView(R.id.avatar);
 
         String url = user.getAvatar_url();
         String url2 = url;
@@ -66,5 +66,6 @@ public class TopicListDelegates extends ViewDelegates<Topic> {
         };
 
         holder.setOnClickListener(listener, R.id.avatar, R.id.username, R.id.item, R.id.node_name);
+
     }
 }

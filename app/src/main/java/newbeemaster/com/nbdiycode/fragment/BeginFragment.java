@@ -12,8 +12,10 @@ import com.nineoldandroids.animation.Animator;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 import org.greenrobot.eventbus.EventBus;
 import java.util.concurrent.TimeUnit;
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import io.reactivex.Observable;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.animate.plugins.Begin_Iv_Animator;
@@ -28,16 +30,17 @@ import zone.com.zrefreshlayout.utils.SimpleAnimatorListener;
 
 public class BeginFragment extends RxFragment {
 
-    @Bind(R.id.iv)
+    @BindView(R.id.iv)
     ImageView iv;
-    @Bind(R.id.loadingPass)
+    @BindView(R.id.loadingPass)
     TextView loadingPass;
+    private Unbinder binder;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_begin, null);
-        ButterKnife.bind(this, rootView);
+        binder=ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -74,6 +77,6 @@ public class BeginFragment extends RxFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        binder.unbind();
     }
 }

@@ -5,8 +5,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.zone.adapter3.bean.Holder;
 import com.zone.adapter3.bean.ViewDelegates;
-import com.zone.adapter3.helper.Helper;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.util.IntentUtil;
 import newbeemaster.com.nbdiycode.util.TimeUtil;
@@ -26,7 +26,7 @@ public class NewListDelegates extends ViewDelegates<New> {
     }
 
     @Override
-    public void fillData(int i, New bean, Helper<Helper> holder) {
+    public void fillData(int postion, New bean, Holder holder) {
         final User user = bean.getUser();
         holder.setText(R.id.username, user.getLogin());
         holder.setText(R.id.node_name, bean.getNode_name());
@@ -35,7 +35,7 @@ public class NewListDelegates extends ViewDelegates<New> {
         holder.setText(R.id.host_name, UrlUtil.getHost(bean.getAddress()));
 
         // 加载头像
-        ImageView imageView = holder.getView(R.id.avatar);
+        ImageView imageView = (ImageView) holder.getView(R.id.avatar);
         String url = user.getAvatar_url();
         String url2 = url;
         if (url.contains("diycode"))    // 添加判断，防止替换掉其他网站掉图片

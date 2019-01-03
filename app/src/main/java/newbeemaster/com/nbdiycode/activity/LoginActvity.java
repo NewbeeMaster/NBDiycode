@@ -5,15 +5,15 @@ import android.widget.EditText;
 import com.socks.library.ZLog;
 import com.zone.lib.utils.activity_fragment_ui.ToastUtils;
 import com.zone.lib.utils.data.check.StringCheck;
-import com.zone.lib.utils.data.file2io2data.SharedUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.constant.SPConstant;
+import newbeemaster.com.nbdiycode.utils.SP1;
 import zone.com.sdk.API.login.event.UserEvent;
 import newbeemaster.com.nbdiycode.util.IntentUtil;
 import newbeemaster.com.nbdiycode.utils.RxComposes;
@@ -26,9 +26,9 @@ import zone.com.sdk.base.extra.CacheUtil;
 
 public class LoginActvity extends BaseNBActivity {
 
-    @Bind(R.id.etUsername)
+    @BindView(R.id.etUsername)
     EditText etUsername;
-    @Bind(R.id.etPassword)
+    @BindView(R.id.etPassword)
     EditText etPassword;
 
     @Override
@@ -76,7 +76,7 @@ public class LoginActvity extends BaseNBActivity {
                                     .compose(RxComposes.applyObservableAsync())
                                     .subscribe(userDetail -> {
                                                 EventBus.getDefault().post(new UserEvent(userDetail));
-                                                SharedUtils.put(SPConstant.USER_DETAIL, userDetail);
+                                                SP1.INSTANCE.put(SPConstant.USER_DETAIL, userDetail);
                                                 finish();
                                             },
                                             throwable -> {

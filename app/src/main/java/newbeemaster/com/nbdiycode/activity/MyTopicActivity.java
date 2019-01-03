@@ -29,7 +29,6 @@ import android.widget.LinearLayout;
 
 import com.zone.adapter3.QuickRcvAdapter;
 import com.zone.adapter3.base.IAdapter;
-import com.zone.lib.utils.data.file2io2data.SharedUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -38,13 +37,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import ezy.ui.layout.LoadingLayout;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.constant.SPConstant;
 import newbeemaster.com.nbdiycode.adapter.TopicListDelegates;
 import newbeemaster.com.nbdiycode.event.DataUpdateEvent;
+import newbeemaster.com.nbdiycode.utils.SP1;
 import retrofit2.Call;
 import zone.com.sdk.API.login.bean.UserDetail;
 import zone.com.sdk.API.topic.bean.Topic;
@@ -53,11 +53,11 @@ import zone.com.zhelper.ZonePullView;
 import zone.com.zrefreshlayout.ZRefreshLayout;
 
 public class MyTopicActivity extends BaseNBActivity {
-    @Bind(R.id.rv)
+    @BindView(R.id.rv)
     RecyclerView rv;
-    @Bind(R.id.refresh)
+    @BindView(R.id.refresh)
     ZRefreshLayout refresh;
-    @Bind(R.id.ll_root)
+    @BindView(R.id.ll_root)
     LinearLayout llRoot;
 
     private IAdapter<Topic> adapter;
@@ -74,7 +74,7 @@ public class MyTopicActivity extends BaseNBActivity {
         }
 
         public Call<List<Topic>> request(int offset, int limit) {
-            UserDetail userDetail = SharedUtils.get(SPConstant.USER_DETAIL, UserDetail.class);
+            UserDetail userDetail = SP1.INSTANCE.get(SPConstant.USER_DETAIL, UserDetail.class);
             Call<List<Topic>> result = null;
             switch (content) {
                 case "我的帖子":

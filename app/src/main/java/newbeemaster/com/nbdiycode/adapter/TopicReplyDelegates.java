@@ -6,9 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zone.adapter3.bean.Holder;
 import com.zone.adapter3.bean.ViewDelegates;
-import com.zone.adapter3.helper.Helper;
-
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.UserActivity;
 import newbeemaster.com.nbdiycode.gilde.GlideImageGetter;
@@ -28,15 +27,16 @@ public class TopicReplyDelegates extends ViewDelegates<TopicReply> {
         return R.layout.item_topic_reply;
     }
 
+
     @Override
-    public void fillData(int i, TopicReply bean, Helper<Helper> helper) {
+    public void fillData(int postion, TopicReply bean, Holder helper) {
         final User user = bean.getUser();
         helper.setText(R.id.username, user.getLogin());
         helper.setText(R.id.time, TimeUtil.computePastTime(bean.getUpdated_at()));
 
-        ImageView avatar = helper.getView(R.id.avatar);
+        ImageView avatar = (ImageView) helper.getView(R.id.avatar);
         ImageUtils.loadImage(context, user.getAvatar_url(), avatar);
-        TextView content = helper.getView(R.id.content);
+        TextView content = (TextView) helper.getView(R.id.content);
         // TODO 评论区代码问题  Html.fromHtml 第二个参数？
         content.setText(Html.fromHtml(HtmlUtil.removeP(bean.getBody_html()),
                 new GlideImageGetter(context, content), null));

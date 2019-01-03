@@ -25,9 +25,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import ezy.ui.layout.LoadingLayout;
-import io.reactivex.Observable;
+import butterknife.BindView;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.adapter.TopicReplyDelegates;
@@ -55,33 +53,33 @@ public class TopicContentActivity extends BaseNBActivity {
     public static String TOPIC_ID = "topic_id";
     public static String ERROR = "error";
     public static String TYPE = "type";
-    @Bind(R.id.need_login)
+    @BindView(R.id.need_login)
     RelativeLayout needLogin;
-    @Bind(R.id.my_reply)
+    @BindView(R.id.my_reply)
     EditText myReply;
-    @Bind(R.id.send_reply)
+    @BindView(R.id.send_reply)
     Button sendReply;
-    @Bind(R.id.can_reply)
+    @BindView(R.id.can_reply)
     RelativeLayout canReply;
-    @Bind(R.id.login)
+    @BindView(R.id.login)
     Button login;
-    @Bind(R.id.ll_main)
+    @BindView(R.id.ll_main)
     LinearLayout ll_main;
-    @Bind(R.id.username)
+    @BindView(R.id.username)
     TextView username;
-    @Bind(R.id.time)
+    @BindView(R.id.time)
     TextView time;
-    @Bind(R.id.title)
+    @BindView(R.id.title)
     TextView title;
-    @Bind(R.id.reply_count)
+    @BindView(R.id.reply_count)
     TextView replyCount;
 
     private int topic_id = -1;
     private Topic topic = null;
 
-    @Bind(R.id.reply_list)
+    @BindView(R.id.reply_list)
     RecyclerView reply_list;
-    @Bind(R.id.webview_container)
+    @BindView(R.id.webview_container)
     FrameLayout webview_container;
     private MarkdownView mMarkdownView;
 

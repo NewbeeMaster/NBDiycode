@@ -12,7 +12,7 @@ import com.zone.lib.utils.data.info.AppUtils;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import newbeemaster.com.nbdiycode.R;
@@ -27,9 +27,9 @@ import zone.com.sdk.Diycode;
 
 public class SettingActivity extends BaseNBActivity {
 
-    @Bind(R.id.app_version)
+    @BindView(R.id.app_version)
     TextView appVersion;
-    @Bind( R.id.user)
+    @BindView(R.id.user)
     LinearLayout userLinearLayout;
 
     @Override

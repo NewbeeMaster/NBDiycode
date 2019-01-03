@@ -1,8 +1,7 @@
 package newbeemaster.com.nbdiycode.adapter;
 
+import com.zone.adapter3.bean.Holder;
 import com.zone.adapter3.bean.ViewDelegates;
-import com.zone.adapter3.helper.Helper;
-
 import newbeemaster.com.nbdiycode.R;
 import zone.com.sdk.API.sites.bean.SiteItem;
 
@@ -23,7 +22,7 @@ public class SiteFullDelegates extends ViewDelegates<SiteItem> {
     }
 
     @Override
-    public void fillData(int i, SiteItem bean, Helper<Helper> holder) {
-        holder.setText(R.id.name, bean.getName());
+    public void fillData(int postion, SiteItem data, Holder holder) {
+        holder.setText(R.id.name, data.getName());
     }
 }

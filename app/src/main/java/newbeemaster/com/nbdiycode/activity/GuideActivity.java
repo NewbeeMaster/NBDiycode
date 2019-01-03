@@ -3,7 +3,6 @@ package newbeemaster.com.nbdiycode.activity;
 import android.content.Intent;
 
 import com.zone.lib.utils.activity_fragment_ui.FragmentSwitcher;
-import com.zone.lib.utils.data.file2io2data.SharedUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -16,6 +15,7 @@ import newbeemaster.com.nbdiycode.constant.SPConstant;
 import newbeemaster.com.nbdiycode.event.GuideFinishEvent;
 import newbeemaster.com.nbdiycode.fragment.BeginFragment;
 import newbeemaster.com.nbdiycode.fragment.GuideFragment;
+import newbeemaster.com.nbdiycode.utils.SP1;
 
 /**
  * [2017] by Zone
@@ -37,7 +37,7 @@ public class GuideActivity extends BaseNBActivity {
 
     @Override
     public void initData() {
-        int openCount = SharedUtils.get(SPConstant.OPEN_COUNT, 0);
+        int openCount = SP1.INSTANCE.get(SPConstant.OPEN_COUNT, 0);
 
         fragmentSwitcher = new FragmentSwitcher(this, R.id.flRoot);
         if (openCount == 0)//第一次
@@ -47,7 +47,7 @@ public class GuideActivity extends BaseNBActivity {
         fragmentSwitcher.switchPage(0);
 
         openCount++;
-        SharedUtils.put(SPConstant.OPEN_COUNT, openCount);
+        SP1.INSTANCE.put(SPConstant.OPEN_COUNT, openCount);
     }
 
     @Override

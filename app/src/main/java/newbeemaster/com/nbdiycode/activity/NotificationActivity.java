@@ -8,7 +8,8 @@ import com.zone.adapter3.QuickRcvAdapter;
 import com.zone.adapter3.base.IAdapter;
 import java.util.ArrayList;
 import java.util.List;
-import butterknife.Bind;
+
+import butterknife.BindView;
 import ezy.ui.layout.LoadingLayout;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
@@ -33,11 +34,11 @@ public class NotificationActivity extends BaseNBActivity {
     private static String MENTION_TYPE_NewReply = "HacknewsReply";      // - News  回复中提及
     private static String MENTION_TYPE_ProjectReply = "ProjectReply";   // - 项目   回复中提及
 
-    @Bind(R.id.rv)
+    @BindView(R.id.rv)
     RecyclerView rv;
-    @Bind(R.id.refresh)
+    @BindView(R.id.refresh)
     ZRefreshLayout refresh;
-    @Bind(R.id.ll_root)
+    @BindView(R.id.ll_root)
     LinearLayout llRoot;
 
     private IAdapter<Notification> adapter;
@@ -64,37 +65,38 @@ public class NotificationActivity extends BaseNBActivity {
             protected Call<List<Notification>> request(int offset, int limit) {
                 return Diycode.getInstance().getNotificationsList(offset, limit);
             }
-
             @Override
             protected void handleData(int offset, List<Notification> body) {
                 datas.addAll(clearExtraData(body));
             }
 
-            /**
-             * 清洗数据，主要清洗对象
-             * 1. HackNew 的回复 type = Hacknews
-             * 2. HackNew 的提及 type = Mention, mention_type = HacknewsReply
-             * 3. Project 的提及 type = Mention, mention_type = ProjectReply
-             * <p>
-             * 保留数据
-             * 1. Topic 的回复 type = TopicReply
-             * 2. Topic 的提及 type = Mention, mention_type = Reply
-             */
-            private List<Notification> clearExtraData(List<Notification> datas) {
-                List<Notification> clearDatas = new ArrayList<>();
-                for (Notification data : datas) {
-                    if (data.getType().equals(TYPE_TopicReply) ||
-                            (data.getType().equals(TYPE_Mention) && data.getMention_type().equals
-                                    (MENTION_TYPE_TopicReply))) {
-                        clearDatas.add(data);
-                    }
-                }
-                return clearDatas;
-            }
         }.setLimit(10);
 
 
         zonePullView.firstLoading(0, LoadingLayout.wrap(llRoot));
+    }
+
+
+    /**
+     * 清洗数据，主要清洗对象
+     * 1. HackNew 的回复 type = Hacknews
+     * 2. HackNew 的提及 type = Mention, mention_type = HacknewsReply
+     * 3. Project 的提及 type = Mention, mention_type = ProjectReply
+     * <p>
+     * 保留数据
+     * 1. Topic 的回复 type = TopicReply
+     * 2. Topic 的提及 type = Mention, mention_type = Reply
+     */
+    private List<Notification> clearExtraData(List<Notification> datas) {
+        List<Notification> clearDatas = new ArrayList<>();
+        for (Notification data : datas) {
+            if (data.getType().equals(TYPE_TopicReply) ||
+                    (data.getType().equals(TYPE_Mention) && data.getMention_type().equals
+                            (MENTION_TYPE_TopicReply))) {
+                clearDatas.add(data);
+            }
+        }
+        return clearDatas;
     }
 
 

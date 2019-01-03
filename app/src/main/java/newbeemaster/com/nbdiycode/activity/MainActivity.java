@@ -16,16 +16,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.zone.lib.utils.data.file2io2data.SharedUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
 import newbeemaster.com.nbdiycode.constant.SPConstant;
 import newbeemaster.com.nbdiycode.event.DataUpdateEvent;
+import newbeemaster.com.nbdiycode.utils.SP1;
 import zone.com.sdk.API.login.event.UserEvent;
 import newbeemaster.com.nbdiycode.fragment.NewListFragment;
 import newbeemaster.com.nbdiycode.fragment.SiteListFragment;
@@ -42,15 +42,15 @@ public class MainActivity extends BaseNBActivity
     private SiteListFragment mFragment3;
 
     // view
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.drawer_layout)
+    @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
-    @Bind(R.id.nav_view)
+    @BindView(R.id.nav_view)
     NavigationView navigationView;
-    @Bind(R.id.view_pager)
+    @BindView(R.id.view_pager)
     ViewPager mViewPager;
-    @Bind(R.id.tab_layout)
+    @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
     private TextView username, tagline;
     private ImageView avatar;
@@ -76,7 +76,7 @@ public class MainActivity extends BaseNBActivity
     public void initData() {
         initMenu();
         loadMenuData(new UserEvent(Diycode.getInstance()
-                .isLogin() ? SharedUtils.get(SPConstant.USER_DETAIL, UserDetail.class) : null));
+                .isLogin() ? SP1.INSTANCE.get(SPConstant.USER_DETAIL, UserDetail.class) : null));
         initViewPager();
     }
 

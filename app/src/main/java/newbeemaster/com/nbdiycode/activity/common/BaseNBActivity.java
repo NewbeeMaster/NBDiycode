@@ -25,6 +25,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.io.Serializable;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 import newbeemaster.com.nbdiycode.R;
@@ -38,6 +39,7 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
 
     protected ViewHolder mViewHolder;
     private boolean isRegisterEventBus;
+    private Unbinder binder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +59,13 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
     }
 
     @Override
+    public void updateKinds() {
+        super.updateKinds();
+    }
+
+    @Override
     public void findIDs() {
-        ButterKnife.bind(this);
+        binder=ButterKnife.bind(this);
         initActionBar(R.id.toolbar);
     }
 
@@ -98,7 +105,7 @@ public abstract class BaseNBActivity extends BaseAppCompatActivity implements Li
             }
 
         try {
-            ButterKnife.unbind(this);
+            binder.unbind();
         } catch (Exception e) {
             e.printStackTrace();
         }

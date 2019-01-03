@@ -14,8 +14,10 @@ import com.zone.adapter3.QuickRcvAdapter;
 import com.zone.adapter3.base.IAdapter;
 import java.util.ArrayList;
 import java.util.List;
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import ezy.ui.layout.LoadingLayout;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.adapter.NewListDelegates;
@@ -30,22 +32,23 @@ import zone.com.zrefreshlayout.ZRefreshLayout;
  */
 
 public class NewListFragment extends Fragment {
-    @Bind(R.id.rv)
+    @BindView(R.id.rv)
     RecyclerView rv;
-    @Bind(R.id.refresh)
+    @BindView(R.id.refresh)
     ZRefreshLayout refresh;
-    @Bind(R.id.ll_root)
+    @BindView(R.id.ll_root)
     LinearLayout llRoot;
 
     private IAdapter<New> adapter;
     private List<New> datas=new ArrayList<>();
+    private Unbinder binder;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_list, null);
-        ButterKnife.bind(this, rootView);
+        binder=ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -79,7 +82,7 @@ public class NewListFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        binder.unbind();
     }
 
 }

@@ -2,7 +2,7 @@ package newbeemaster.com.nbdiycode.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,8 +25,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import ezy.ui.layout.LoadingLayout;
 import io.reactivex.Observable;
@@ -59,19 +58,19 @@ public class UserActivity extends BaseNBActivity {
     public static String TYPE_USER_CREATE = "user_create";
     public static String TYPE_USER_REPLY = "user_reply";
     public static String USER = "user";
-    @Bind(R.id.scroll_view)
+    @BindView(R.id.scroll_view)
     NestedScrollView scrollView;
-    @Bind(R.id.background)
+    @BindView(R.id.background)
     ImageView background;
     private ExpectAnim expectAnimMove;
 
-    @Bind(R.id.username)
+    @BindView(R.id.username)
     TextView username;
-    @Bind(R.id.avatar)
+    @BindView(R.id.avatar)
     ImageView avatar;
-    @Bind(R.id.rv)
+    @BindView(R.id.rv)
     RecyclerView rv;
-    @Bind(R.id.fl_root)
+    @BindView(R.id.fl_root)
     FrameLayout fl_root;
 
     private IAdapter<Topic> adapter;
@@ -156,14 +155,18 @@ public class UserActivity extends BaseNBActivity {
                 )
                 .toAnimation();
 
-        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int
-                    oldScrollX, int oldScrollY) {
-                final float percent = (scrollY * 1f) / v.getMaxScrollAmount();
-                expectAnimMove.setPercent(percent);
-            }
-        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //todo ?
+            scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                    if(v instanceof NestedScrollView){
+                        final float percent = (scrollY * 1f) / ((NestedScrollView)v).getMaxScrollAmount();
+                        expectAnimMove.setPercent(percent);
+                    }
+                }
+            });
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

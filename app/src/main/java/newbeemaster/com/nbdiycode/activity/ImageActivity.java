@@ -26,7 +26,7 @@ import com.zone.zbanner.simpleadapter.PagerAdapterCircle_Image;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.activity.common.BaseNBActivity;
@@ -47,9 +47,9 @@ public class ImageActivity extends BaseNBActivity {
 
     private PagerAdapterCycle mviewPager;
     private ShapeIndicator circleIndicator;
-    @Bind(R.id.pager)
+    @BindView(R.id.pager)
     ViewPagerCircle pager;
-    @Bind(R.id.indicatorView)
+    @BindView(R.id.indicatorView)
     IndicatorView indicatorView;
 
     @Override

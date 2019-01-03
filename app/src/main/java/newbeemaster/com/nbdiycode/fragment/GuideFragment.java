@@ -23,8 +23,9 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.event.GuideFinishEvent;
 
@@ -34,22 +35,23 @@ import newbeemaster.com.nbdiycode.event.GuideFinishEvent;
 
 public class GuideFragment extends RxFragment {
 
-    @Bind(R.id.pager)
+    @BindView(R.id.pager)
     ViewPagerCircle pager;
-    @Bind(R.id.indicatorView)
+    @BindView(R.id.indicatorView)
     IndicatorView indicatorView;
-    @Bind(R.id.ivLaunch)
+    @BindView(R.id.ivLaunch)
     ImageView ivLaunch;
 
     final List<Integer> resourceList = new ArrayList<Integer>();
     private PagerAdapterCircle_Image mviewPager;
     private ShapeIndicator circleIndicator;
+    private Unbinder binder;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_guide, null);
-        ButterKnife.bind(this, rootView);
+        binder=ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -113,6 +115,6 @@ public class GuideFragment extends RxFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        binder.unbind();
     }
 }

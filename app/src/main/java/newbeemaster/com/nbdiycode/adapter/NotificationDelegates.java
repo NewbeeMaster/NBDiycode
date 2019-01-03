@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zone.adapter3.bean.Holder;
 import com.zone.adapter3.bean.ViewDelegates;
-import com.zone.adapter3.helper.Helper;
 
 import newbeemaster.com.nbdiycode.R;
 import newbeemaster.com.nbdiycode.util.HtmlUtil;
@@ -36,7 +36,7 @@ public class NotificationDelegates extends ViewDelegates<Notification> {
     }
 
     @Override
-    public void fillData(int i, Notification bean, Helper<Helper> helper) {
+    public void fillData(int postion, Notification bean, Holder helper) {
 
         final User actor = bean.getActor();
         String suffix = "";
@@ -54,12 +54,12 @@ public class NotificationDelegates extends ViewDelegates<Notification> {
         }
         String type = actor.getLogin() + " " + suffix;
 
-        ImageView imageView = helper.getView(R.id.avatar);
+        ImageView imageView = (ImageView) helper.getView(R.id.avatar);
         ImageUtils.loadImage(context, actor.getAvatar_url(), imageView);
         helper.setText(R.id.notification_type, type);
 
         Spanned result_desc = Html.fromHtml(HtmlUtil.removeP(desc));
-        TextView text_desc = helper.getView(R.id.desc);
+        TextView text_desc = (TextView) helper.getView(R.id.desc);
         text_desc.setText(result_desc);
 
         helper.setOnClickListener(new View.OnClickListener() {
